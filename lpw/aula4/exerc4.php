@@ -20,7 +20,7 @@
         for($i=1; $i<4; $i++){
             $pessoa[$i]=new Pessoa($_POST["nome$i"],$_POST["idade$i"]);
         }
-        $count=0;
+        $flag=True;
         for($i=1; $i<4; $i++){
             if(intval($pessoa[$i]->getIdade())>30){
                 echo "<h2>Dados da Pessoa $i:</h2>";
@@ -28,12 +28,10 @@
                 echo "<li>Nome: " . $pessoa[$i]->getNome() . "</li>";
                 echo "<li>Idade: " . $pessoa[$i]->getIdade() . "</li>";
                 echo "</ul>";
-            }
-            else{
-                $count++;
+                $flag=False;
             }
         }
-        if($count==3){
+        if($flag==True){
             echo "<h2>Não existem pessoas com mais de 30 anos</h2>";
         }
     }
