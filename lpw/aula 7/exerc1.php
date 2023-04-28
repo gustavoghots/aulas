@@ -17,9 +17,7 @@
     include_once 'fisica.php';
     include_once 'juridica.php';
     include_once 'pessoa.php';
-    $f[0] = new Fisica();
-    $f[0]->SetNome($_POST["nome"]);
-    $f[0]->SetIdade($_POST['idade']);
+    $f[0] = new Fisica($_POST['nome'],$_POST['idade']);
     $f[0]->SetCpf($_POST['cpf']);
     echo "<h2>Dados da Pessoa:</h2>";
             echo "<ul>";
