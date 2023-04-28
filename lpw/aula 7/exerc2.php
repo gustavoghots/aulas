@@ -17,9 +17,7 @@
     include_once 'fisica.php';
     include_once 'juridica.php';
     include_once 'pessoa.php';
-    $j[0] = new Juridica();
-    @$j[0]->SetNome($_GET["nome"]);
-    @$j[0]->SetIdade($_GET['idade']);
+    @$j[0] = new juridica($_GET['nome'],$_GET['idade']);
     @$j[0]->SetCnpj($_GET['cnpj']);
     if($j[0]->GetIdade()!=100){
         echo "<h2>Dados da Pessoa:</h2>";
