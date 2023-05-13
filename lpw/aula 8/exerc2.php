@@ -1,4 +1,5 @@
 <?php
+//jeito +- inteligente
     echo "<body>
             <form method='POST' action=''>
                 <label>Salario minimo:</label><br>
