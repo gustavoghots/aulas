@@ -1,4 +1,5 @@
 <?php
+//Jeito burro
     include_once 'aluno.php';
     include_once 'fisica.php';
     include_once 'juridica.php';
