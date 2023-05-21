@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <script>
+            function calcularFatorial(numero) {
+                if (numero === 0 || numero === 1) {
+                    return 1;
+                }
+
+                var resultado = 1;
+                for (var i = numero; i >= 2; i--) {
+                    resultado *= i;
+                }
+
+                return resultado;
+                }
+
+                var numero = parseInt(prompt("Digite um número:"));
+                var fatorial = calcularFatorial(numero);
+                console.log("O fatorial de " + numero + " é: " + fatorial);
+        </script>
+    </body>
+</html>
