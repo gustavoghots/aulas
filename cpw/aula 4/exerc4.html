@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <script>
+            function jogoAdivinhacao() {
+                const numeroAleatorio = Math.floor(Math.random() * 100) + 1; // Gera um número aleatório de 1 a 100
+                let tentativas = 0;
+                let numeroDigitado;
+            
+                do {
+                numeroDigitado = parseInt(prompt("Digite um número:"));
+            
+                if (isNaN(numeroDigitado)) {
+                    console.log("Por favor, digite um número válido!");
+                } else if (numeroDigitado > numeroAleatorio) {
+                    console.log("Número muito alto!");
+                    tentativas++;
+                } else if (numeroDigitado < numeroAleatorio) {
+                    console.log("Número muito baixo!");
+                    tentativas++;
+                }
+                } while (numeroDigitado !== numeroAleatorio);
+            
+                console.log("Parabéns! Você acertou o número " + numeroAleatorio);
+                console.log("Número de tentativas: " + tentativas);
+            }
+            
+            jogoAdivinhacao();
+        </script>
+    </body>
+</html>
