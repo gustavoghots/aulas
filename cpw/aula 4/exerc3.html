@@ -1,0 +1,36 @@
+<html>
+    <body>
+        <script>
+            function calcularOperacao(operador, numero1, numero2) {
+                let resultado;
+            
+                switch (operador) {
+                case "+":
+                    resultado = numero1 + numero2;
+                    break;
+                case "-":
+                    resultado = numero1 - numero2;
+                    break;
+                case "/":
+                    resultado = numero1 / numero2;
+                    break;
+                case "*":
+                    resultado = numero1 * numero2;
+                    break;
+                default:
+                    console.log("Operador inválido!");
+                    return;
+                }
+            
+                console.log("Resultado:", resultado);
+            }
+            
+            // Exemplos de uso:
+            calcularOperacao("+", 5, 3);
+            calcularOperacao("-", 10, 9);
+            calcularOperacao("/", 15, 4);
+            calcularOperacao("*", 4, 6);
+            calcularOperacao("%", 2, 3);
+        </script>
+    </body>
+</html>
