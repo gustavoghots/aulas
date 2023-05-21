@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <script>
+            function verificarAlistamento(idade, sexo) {
+                if (idade < 18) {
+                    return "Não apto para se alistar";
+                } else if (sexo === "masculino" && idade >= 18 && idade <= 25) {
+                    return "Alistamento obrigatório";
+                } else if (sexo === "masculino" && idade > 25) {
+                    return "Alistamento facultativo";
+                } else {
+                    return "Alistamento não obrigatório";
+                }
+            }
+
+            console.log(verificarAlistamento(17, "masculino"));
+            console.log(verificarAlistamento(20, "masculino"));
+            console.log(verificarAlistamento(30, "masculino"));
+            console.log(verificarAlistamento(19, "feminino"));
+        </script>
+    </body>
+</html>
