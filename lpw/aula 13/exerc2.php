@@ -12,6 +12,11 @@
         $lista[$i]->setIdade(rand(18,99));
         $lista[$i]->setNome(randString(3));
     }
+
+    foreach ($lista as $lista){
+        echo  $lista->getNome().' - '.$lista->getIdade()."<br>";
+    }
+
     function randString($tamPalavra){
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         $tamVar = strlen($chars);
@@ -19,9 +24,5 @@
         for( $x = 0; $x < $tamPalavra; $x++ )
         $retorno = $retorno.(String) $chars[ rand( 0, $tamVar - 1 ) ];
         return $retorno;
-    }
-
-    foreach ($lista as $lista){
-        echo  $lista->getNome().' - '.$lista->getIdade()."<br>";
     }
 ?>
