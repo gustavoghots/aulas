@@ -1,0 +1,18 @@
+<html>
+    <script>
+        // calcula o tamanho do arquivo baseado no valor inserido no prompt
+        var numero = parseInt(prompt("Tamanho do arquivo"));
+        const tipo = [" B"," KB"," MB"," GB"," TB"," PB"," EB"," ZB"," YB"];
+        const divisor = 1024;
+        if (numero < divisor){
+            console.log(numero + tipo[0]);
+        }else{
+            for (let i = 1;numero>=divisor; i++){
+                if ((numero/divisor)<divisor){
+                    console.log((numero/divisor).toFixed(2)+tipo[i]);
+                }
+                numero/=divisor;
+            }
+        }
+    </script>
+</html>
