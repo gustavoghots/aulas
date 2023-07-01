@@ -1,0 +1,18 @@
+<html>
+    <script>
+        //validação de senha
+        const senha = prompt("Digite sua senha");
+        console.log(validadeComplexidade());
+
+        function validadeComplexidade(){
+            if (senha.length >= 8 && senha.length <= 32){
+                if(/[0-9]/.test(senha) && /[A-Z]/.test(senha) && /[a-z]/.test(senha)){
+                    if(!senha.match(/\W/)){
+                        return 1;
+                    }
+                }
+            }
+            return 0;
+        }
+    </script>
+</html>
