@@ -1,9 +1,11 @@
 <html>
     <input type="submit" id="botao">
     <script>
-        document.getElementById("botao").addEventListener("click", function(){
+        document.getElementById("botao").addEventListener("click", console());
+
+        function console(){
             event.preventDefault();
             console.log("oi");
-        });
+        }
     </script>
 </html>
