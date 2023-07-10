@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script>
+            //soma,subtração, multiplicação, divisão, mdc, mmc, exponenciação, raiz, 
+            function mdc(a, b) {
+                if (b === 0) {
+                    return a;
+                } else {
+                    return mdc(b, a % b);
+                }
+            }
+
+            function mmc(a,b){
+                return (a*b)/mdc(a,b);
+            }
+
+            function raiz(a,expoente){
+                return a**(1/expoente);
+            }
+
+            function raizesQuadraticas(a, b, c) {
+                let delta = b*b-4*a*c;
+                if (delta > 0){
+                    let x1 = (-b + Math.sqrt(delta))/(2*a);
+                    let x2 = (-b - Math.sqrt(delta))/(2*a);
+                    return [x1, x2];
+                } else if (delta === 0){
+                    let x = -b/(2*a);
+                    return [x];
+                } else{
+                    let parteReal = -b/(2*a);
+                    let parteImaginaria = Math.sqrt(-delta) / (2 * a);
+                    let x1 = parteReal + " + " + parteImaginaria + "i";
+                    let x2 = parteReal + " - " + parteImaginaria + "i";
+                    return [x1, x2];
+                        }
+                }
+            console.clear();
+            console.log(mdc(5,10));
+            console.log(mmc(3,10));
+            console.log(raiz(9,2));
+            console.log(raizesQuadraticas(2,3,1));
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
