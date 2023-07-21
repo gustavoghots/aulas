@@ -1,0 +1,140 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  #pessoa {
+    width: 300px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  #cpf,
+  #cnpj {
+    display: none;
+  }
+  
+  #pessoa.dark-mode #cpf,
+  #pessoa.dark-mode #cnpj {
+    display: block;
+  }
+  
+  .dados-pessoa {
+    margin-top: 20px;
+    max-width: 600px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .dados-pessoa h2 {
+    margin-bottom: 5px;
+  }
+  
+  .dados-pessoa ul {
+    border: 1px solid #555;
+    padding: 10px;
+    list-style: none;
+  }
+  
+  .dados-pessoa li {
+    margin-bottom: 5px;
+  }
+  
+  .moon {
+    width: 100px;
+    height: 100px;
+    background-color: #f0c878;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    box-shadow: 0 0 10px rgba(240, 200, 120, 0.8);
+  }
+  
+  /* Night mode styles */
+  body.dark-mode {
+    background-color: #111;
+    color: #ddd;
+  }
+  
+  #pessoa.dark-mode {
+    background-color: #222;
+  }
+  
+  input[type="text"].dark-mode,
+  input[type="number"].dark-mode,
+  select.dark-mode {
+    background-color: #444;
+    color: #ddd;
+    border: 1px solid #666;
+  }
+  
+  input[type="submit"].dark-mode {
+    background-color: #0056b3;
+  }
+  
+  .dados-pessoa.dark-mode {
+    background-color: #222;
+  }
+  
+  .dados-pessoa ul.dark-mode {
+    border: 1px solid #555;
+  }
+  
+  .dados-pessoa li.dark-mode {
+    color: #ddd;
+  }
+  
+  .moon.dark-mode {
+    .moon{
+        background-color:red;
+        position:absolute;
+        margin:auto;
+        top:0;
+        bottom:70%;
+        left:70%;
+        right:0;
+        background-color:transparent;
+        height:100px;
+        width:100px;
+        border-radius:50%;
+        box-shadow:25px 10px 0 0 rgb(99, 0, 165);
+    }
+  }
+  

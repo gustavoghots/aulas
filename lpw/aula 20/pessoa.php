@@ -2,6 +2,7 @@
   class Pessoa {
     private $nome;
     private $idade;
+    private $altura;
 
     public function getNome() {
       return $this->nome;
@@ -17,6 +18,14 @@
 
     public function setIdade($idade) {
       $this->idade = $idade;
-  }
+    }
+
+    public function getAltura() {
+        return $this->altura;
+      }
+  
+    public function setAltura($altura) {
+        $this->altura = $altura;
+    }
 }
 ?>

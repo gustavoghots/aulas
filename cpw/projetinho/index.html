@@ -1,7 +1,9 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
         <script>
-            //soma,subtração, multiplicação, divisão, mdc, mmc, exponenciação, raiz, 
+            //soma,subtração, multiplicação, divisão, mdc, mmc, exponenciação, raiz, raiz real e ireal
             function mdc(a, b) {
                 if (b === 0) {
                     return a;
@@ -23,27 +25,123 @@
                 if (delta > 0){
                     let x1 = (-b + Math.sqrt(delta))/(2*a);
                     let x2 = (-b - Math.sqrt(delta))/(2*a);
-                    return [x1, x2];
+                    return [x1.toFixed(3)+', '+x2.toFixed(3)];
                 } else if (delta === 0){
-                    let x = -b/(2*a);
+                    let x = -b/(2*a).toFixed(3);
                     return [x];
                 } else{
                     let parteReal = -b/(2*a);
                     let parteImaginaria = Math.sqrt(-delta) / (2 * a);
-                    let x1 = parteReal + " + " + parteImaginaria + "i";
-                    let x2 = parteReal + " - " + parteImaginaria + "i";
+                    let x1 = parteReal + " + " + parteImaginaria.toFixed(3) + "i";
+                    let x2 = parteReal + " - " + parteImaginaria.toFixed(3) + "i";
                     return [x1, x2];
                         }
                 }
-            console.clear();
-            console.log(mdc(5,10));
-            console.log(mmc(3,10));
-            console.log(raiz(9,2));
-            console.log(raizesQuadraticas(2,3,1));
+
 
         </script>
     </head>
     <body>
+        <div class="moon"></div>
+        <div id="funcional">
+            <form id="form">
+                <div id="valores">
+                    <div id="form_a">
+                        <label id="label_a">Valor A:</label><br>
+                        <input id="input_a" type="number" name="input_a"><br><br>
+                    </div>
+                    <div id="form_b">
+                        <label id="label_b">Valor B:</label><br>
+                        <input id="input_b" type="number" name="input_b"><br><br>
+                    </div>
+                    <div id="form_c">
+                        <label id="label_c">Valor C:</label><br>
+                        <input id="input_c" type="number" name="input_c"><br><br>
+                    </div>
+                    <div id="form_tipo">
+                        <label id="select">Calculo:</label><br>
+                        <select name="calculo" id="calculo">
+                            <option value="0">Escolha</option>
+                            <option value="soma">Soma</option>
+                            <option value="subtracao">subtração</option>
+                            <option value="multiplicacao">multiplicação</option>
+                            <option value="divisao">divisão</option>
+                            <option value="mdc">MDC</option>
+                            <option value="mmc">MMC</option>
+                            <option value="exponenciacao">Exponenciação</option>
+                            <option value="raiz">Raiz</option>
+                            <option value="bhaskara">Bhaskara</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="form_r">
+                    <label id="label_r"></label><br>
+                    <input id="input_r" type="text" name="input_r" disabled>
+                </div>
+                <input id="submit" type="submit">
+            </form>
+        </div>
 
+        <script>
+            //desabilitar parte form
+            const form_c = document.getElementById("form_c")
+            form_c.style.display = 'none';
+            const form_r = document.getElementById("form_r")
+            form_r.style.display = 'none';
+
+            //configura display
+            document.getElementById("calculo").addEventListener("change", function(event){
+                let calculo = document.getElementById("calculo");
+                if(calculo.value == 'bhaskara'){
+                    form_c.style.display = 'inline';
+                }else{
+                    form_c.style.display = 'none';
+                }
+            });
+
+            //calculos
+            document.getElementById("submit").addEventListener("click", function(event){
+                event.preventDefault();
+                //declaração
+                let a = parseFloat(document.getElementById('input_a').value);
+                let b = parseFloat(document.getElementById('input_b').value);
+                let c = parseFloat(document.getElementById('input_c').value);
+                let resposta = document.getElementById('input_r');
+
+                switch (calculo.value){
+                    case 'soma':
+                        resposta.value = a+b;
+                        break;
+                    case 'subtracao':
+                    resposta.value = a-b;
+                        break;
+                    case 'multiplicacao':
+                    resposta.value = a*b;
+                        break;
+                    case 'divisao':
+                    resposta.value = a/b;
+                        break;
+                    case 'mdc':
+                    resposta.value = mdc(a,b);
+                        break;
+                    case 'mmc':
+                    resposta.value = mmc(a,b);
+                        break;
+                    case 'exponenciacao':
+                    resposta.value = a**b;
+                        break;
+                    case 'raiz':
+                    resposta.value = raiz(a,b);
+                        break;
+                    case 'bhaskara':
+                    resposta.value = raizesQuadraticas(a,b,c);
+                        break;
+                    
+                }
+                if(calculo.value!=0){
+                    form_r.style.display = 'inline';
+                }
+            });
+        </script>
     </body>
 </html>
