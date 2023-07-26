@@ -1,0 +1,57 @@
+<html>
+    <script>
+        function ValidarCNPJ(input){
+
+            //tranforma input em string numérica
+            let cnpj = input.split("");
+            cnpj = cnpj.map(valor =>{
+                return Number(valor);
+            });
+
+            //resto primeiro digito
+            let val1=0;
+            for (let i = 0;i<4; i++){
+                val1 += cnpj[i]*(5-i);
+            };
+            for (i = 4; i<12; i++){
+                val1+= cnpj[i]*(9-i+4);
+            }
+            val1 = val1%11;
+            //primeiro digito
+            if(val1<2){
+                dig1=0;
+            }else{
+                dig1=11-val1;
+            }
+
+            //primeiro return caso falso
+            if (dig1 != cnpj[12]){
+                return 0;
+            }else{
+                //resto segundo digito
+                let val2=0;
+                for (let i = 0;i<5; i++){
+                    val2 += cnpj[i]*(6-i);
+                };
+                for (i = 5; i<13; i++){
+                    val2+= cnpj[i]*(9-i+5);
+                }
+                val2 = val2%11;
+
+                //segundo digito
+                if(val2<2){
+                    dig2=0;
+                }else{
+                    dig2=11-val2;
+                }
+
+                //return final
+                if(dig2!=cnpj[13]){
+                    return 0;
+                }else{
+                    return 1;
+                }
+            }
+        }
+    </script>
+</html>

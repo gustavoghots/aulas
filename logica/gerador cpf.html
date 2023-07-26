@@ -1,0 +1,47 @@
+<html>
+    <script>
+        console.log(geradorCPF());
+        function geradorCPF(){
+            //gera 9 digitos cpf e converte
+            let cpf= Math.floor(Math.random()*999999999);
+            cpf = String(cpf).padStart(9,0);
+            cpf = cpf.split("");
+            cpf = cpf.map(valor =>{
+                return Number(valor);
+            });
+
+            //gera digitos validadores
+            let val1=0;
+            for (let i = 0;i<9; i++){
+                val1 += cpf[i]*(10-i);
+            };
+            val1 = val1%11;
+
+            //primeiro digito validador
+            if(val1<2){
+                dig1=0;
+            }else{
+                dig1=11-val1;
+            }
+            cpf[9]=dig1;
+
+            //segundo digito validador
+            let val2=0;
+            for (let i = 0;i<10; i++){
+                val2 += cpf[i]*(11-i);
+            };
+            val2 = val2%11;
+
+            //segundo digito
+            if(val2<2){
+                dig2=0;
+            }else{
+                dig2=11-val2;
+            }
+            cpf[10]=dig2;
+            out = [cpf.join('')];
+            out[1] = out[0].slice(0,3)+'.'+out[0].slice(3,6)+'.'+out[0].slice(6,9)+'-'+out[0].slice(9,11);
+            return out;
+        }
+    </script>
+</html>

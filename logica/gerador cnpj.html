@@ -1,0 +1,50 @@
+<html>
+    <script>
+        function geradorCNPJ(){
+            //gerador 12 digitos cnpj
+            let cnpj= Math.floor(Math.random()*999999999999);
+            cnpj = String(cnpj).padStart(12,0);
+            cnpj = cnpj.split("");
+            cnpj = cnpj.map(valor =>{
+                return Number(valor);
+            });
+
+            //resto primeiro digito
+            let val1=0;
+            for (let i = 0;i<4; i++){
+                val1 += cnpj[i]*(5-i);
+            };
+            for (i = 4; i<12; i++){
+                val1+= cnpj[i]*(9-i+4);
+            }
+            val1 = val1%11;
+            //primeiro digito
+            if(val1<2){
+            dig1=0;
+            }else{
+                dig1=11-val1;
+            }
+            cnpj[12]=dig1;
+
+            //resto segundo digito
+            let val2=0;
+            for (let i = 0;i<5; i++){
+                val2 += cnpj[i]*(6-i);
+            };
+            for (i = 5; i<13; i++){
+                val2+= cnpj[i]*(9-i+5);
+            }
+            val2 = val2%11;
+
+            //segundo digito
+            if(val2<2){
+                dig2=0;
+            }else{
+                dig2=11-val2;
+            }
+            cnpj[13]=dig1;
+            out = [cnpj.join('')];
+            out[1] = out[0].slice(0,2)+'.'+out[0].slice(2,5)+'.'+out[0].slice(5,8)+'/'+out[0].slice(8,12)+'-'+out[0].slice(12,14);
+        }
+    </script>
+</html>

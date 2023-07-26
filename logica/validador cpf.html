@@ -1,0 +1,52 @@
+<html>
+    <script>
+        function ValidarCPF(input){
+
+            //tranforma input em string numérica
+            let cpf = input.split("");
+            cpf = cpf.map(valor =>{
+                return Number(valor);
+            });
+
+            //resto primeiro digito
+            let val1=0;
+            for (let i = 0;i<9; i++){
+                val1 += cpf[i]*(10-i);
+            };
+            val1 = val1%11;
+
+            //primeiro digito
+            if(val1<2){
+                dig1=0;
+            }else{
+                dig1=11-val1;
+            }
+
+            //primeiro return caso falso
+            if (dig1 != cpf[9]){
+                return 0;
+            }else{
+                //resto segundo digito
+                let val2=0;
+                for (let i = 0;i<10; i++){
+                    val2 += cpf[i]*(11-i);
+                };
+                val2 = val2%11;
+
+                //segundo digito
+                if(val2<2){
+                    dig2=0;
+                }else{
+                    dig2=11-val2;
+                }
+
+                //return final
+                if(dig2!=cpf[10]){
+                    return 0;
+                }else{
+                    return 1;
+                }
+            }
+        }
+    </script>
+</html>
