@@ -16,9 +16,11 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         include_once 'conexão.php';
         if(isset($_POST['insert'])){
-            $estado = mysqli_query($con,"select id from estado where nome='".$_POST['estado']."'");
-            $estado = mysqli_fetch_assoc($estado);
-            mysqli_query($con,"insert into cidade(nome,estado) values('".$_POST['cidade']."',".$estado['id'].")");
+            mysqli_query($con,"
+                insert into cidade(nome,estado) 
+                values('".$_POST['cidade']."',(select id from estado 
+                                                where nome='".$_POST['estado']."'))
+            ");
         }elseif(isset($_POST['delete'])){
             mysqli_query($con,"delete from cidade where id=".$_POST['id']);
         }
