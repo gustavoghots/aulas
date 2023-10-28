@@ -1,0 +1,73 @@
+<html>
+  <input type="text" id="in">
+  <input type="button" id="botao" value="Adicionar">
+  <input type="button" id="excluir" value="Excluir"><br><br>
+  <div id="lista">
+    <h3>Lista:</h3><br><br>
+  </div>
+  <head>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+    /* professor do céu, n me pede mais isso, nunca passei tanto trabalho usando coisa tão idiota
+       parecia que eu sabia oq estava fazendo mas na verdade nem lembrava oq era para fazer
+       sofri, mas passo bem **/
+      let lista = Array();
+      let index = 0;
+
+      $("#botao").click(function () {
+        lista.push($('#in').val());
+        $('#lista').append(
+          "<div>" +
+            "<input type='checkbox' class='check' id='c" +
+            index +
+            "' data-index='" +
+            index +
+            "'>" +
+            "<p id='v" +
+            index +
+            "'>" +
+            lista.slice(-1) +
+            "</p>" +
+            "</div>"
+        );
+
+        index++;
+
+        updateCheckboxes();
+      });
+
+      function updateCheckboxes() {
+        $(".check").click(function () {
+          const index = $(this).data("index");
+          toggleStrikeThrough(index);
+        });
+      }
+
+      // Função para riscar ou desriscar um item da lista
+      function toggleStrikeThrough(index) {
+        const item = $("#v" + index);
+        const checkbox = $("#c" + index);
+        if (checkbox.is(":checked")) {
+          item.addClass("strikethrough");
+        } else {
+          item.removeClass("strikethrough");
+        }
+      }
+
+      // Botão "Excluir" para remover elementos marcados
+      $("#excluir").click(function () {
+        $(".check:checked").each(function () {
+          const index = $(this).data("index");
+          lista.splice(index, 1); // Remove o elemento da lista
+          $(this).parent().remove(); // Remove o elemento da tela junto com a caixa de seleção
+        });
+      });
+    </script>
+
+    <style>
+      .strikethrough {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+</html>
