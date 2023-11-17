@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="Estilo.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Seu Título</title>
 </head>
 <body>
     <div class="header-container">
-        <h1 class="header-title">Seu Título</h1>
+        <h1 class="header-title">Eu Odeio Front-End</h1>
     </div>
 
     <div class="nav-container">
@@ -23,7 +23,22 @@
     </div>
 
     <div class="container">
-        <!-- Conteúdo da página aqui -->
+        <div class="main">
+            <!-- Conteúdo da página aqui -->
+            <img src="https://www.barcelonacodeschool.com/static/awesome_css-84ef38fd1c55e5ebea09bd3bd2f03ff1.jpg" alt="CSS is Awesome">
+        </div>
+
+        <div class="sidebar">
+            <button class="toggle-btn">&lt;</button>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Rodapé - Informações adicionais aqui.</p>
     </div>
 
     <script src="script.js"></script>
@@ -32,6 +47,25 @@
             $(".menu-btn").click(function () {
                 $(".menu-list").slideToggle(300);
             });
+
+            $(".toggle-btn").click(function () {
+                $(".sidebar").toggleClass("collapsed");
+            });
+
+            function checkWindowSize() {
+                if ($(window).width() < 768) {
+                    $(".menu-list").hide();
+                    $(".menu-btn").show();
+                    $(".sidebar").addClass("collapsed");
+                } else {
+                    $(".menu-list").show();
+                    $(".menu-btn").hide();
+                    $(".sidebar").removeClass("collapsed");
+                }
+            }
+
+            $(window).resize(checkWindowSize);
+            checkWindowSize();
         });
     </script>
 </body>

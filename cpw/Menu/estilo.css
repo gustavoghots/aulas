@@ -1,6 +1,9 @@
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .header-container {
@@ -24,11 +27,11 @@ body {
     font-size: 1em;
     cursor: pointer;
     display: none;
-    transition: background-color 0.3s ease; /* Adicionado para uma transição suave na mudança de cor */
+    transition: background-color 0.3s ease;
 }
 
 .menu-btn:hover {
-    background-color: #555; /* Cor de fundo ao passar o mouse */
+    background-color: #555;
 }
 
 .nav-container ul {
@@ -41,11 +44,11 @@ body {
 .nav-container li {
     padding: 10px;
     color: white;
-    transition: background-color 0.3s ease; /* Adicionado para uma transição suave na mudança de cor */
+    transition: background-color 0.3s ease;
 }
 
 .nav-container li:hover {
-    background-color: #555; /* Cor de fundo ao passar o mouse */
+    background-color: #555;
 }
 
 .nav-container a {
@@ -57,24 +60,77 @@ body {
     color: white;
 }
 
-@media screen and (max-width: 767px) {
-    .menu-btn {
-        display: block;
-    }
+.container {
+    display: flex;
+}
 
-    .nav-container ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+}
 
-    .nav-container ul.show {
-        display: flex;
-        transition: .5s ease-out;
-    }
+.main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.sidebar {
+    width: 200px;
+    background-color: #555;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    margin: 4px 0;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #777;
+}
+
+.sidebar .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 25px;
+    border: none;
+}
+
+.sidebar.collapsed a {
+    display: none;
+}
+
+.sidebar.collapsed .toggle-btn {
+    text-align: center;
+    background-color: #555;
+    transform: rotate(-90deg);
+}
+
+.sidebar.collapsed .toggle-btn:hover {
+    background-color: #777;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
 }
