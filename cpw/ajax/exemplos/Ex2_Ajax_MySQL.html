@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sugestão de Nomes</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+
+  <label for="nome">Digite um nome:</label>
+  <input type="text" id="nome">
+
+  <div id="sugestoes"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#nome").autocomplete({
+        source: function(request, response) {
+          // Requisição AJAX para buscar sugestões com base no que foi digitado
+          $.ajax({
+            url: "buscar_nomes.php", // Arquivo PHP para buscar sugestões no banco de dados
+            method: "POST",
+            dataType: "json",
+            data: {
+              term: request.term // Termo digitado pelo usuário
+            },
+            success: function(data) {
+              response(data); // Exibe sugestões correspondentes
+            }
+          });
+        },
+        minLength: 2 // Número mínimo de caracteres para iniciar a busca de sugestões
+      });
+    });
+  </script>
+
+</body>
+</html>

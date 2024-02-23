@@ -1,0 +1,14 @@
+{
+    "pessoas":[
+        {
+            "nome":"Gustavo",
+            "idade":18,
+            "cidade":"Pelotas"
+        },
+        {
+            "nome":"Ana Gabriela",
+            "idade":18,
+            "cidade":"Santana do Livramento"
+        }
+    ]
+}

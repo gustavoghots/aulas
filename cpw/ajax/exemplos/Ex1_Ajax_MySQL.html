@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Exemplo Ajax com banco de dados MySQL</h2>
+    <ul id="dados"></ul>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'conn.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    if(data.length > 0){
+                        let items = '';
+                        
+                        $.each(data, function(index, element){
+                            items += '<li>'+ element.nome +': '+element.email+'</li>';     
+                        });
+
+                        $('#dados').html(items);
+
+                    } else {
+                        $('#dados').html('<li>Nenhum dado encontrado!</li>')    
+                    }    
+                },
+                error: function(xhr, status, error){
+                    console.log(status+": "+error);
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

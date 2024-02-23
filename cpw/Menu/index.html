@@ -1,72 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Estilo.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <title>Seu Título</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="header-container">
-        <h1 class="header-title">Eu Odeio Front-End</h1>
+    <div class="container-fluid">
+        <h1>Hello World</h1>
+        <div class="row">
+            <div class="col-sm-8" style="background-color: beige;">oi</div>
+            <div class="col-sm-4" style="background-color: blanchedalmond;">
+                <div class="row">
+                    <div class="col-sm-6"><p>ola</p></div>
+                    <div class="col=sm-6"><p>mundo</p></div>
+                </div>
+            </div>
+        </div>  
     </div>
 
-    <div class="nav-container">
-        <button class="menu-btn">&#9776; Menu</button>
-        <ul class="menu-list">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Ajuda</a></li>
-            <li><a href="#">Suporte</a></li>
-        </ul>
-    </div>
-
-    <div class="container">
-        <div class="main">
-            <!-- Conteúdo da página aqui -->
-            <img src="https://www.barcelonacodeschool.com/static/awesome_css-84ef38fd1c55e5ebea09bd3bd2f03ff1.jpg" alt="CSS is Awesome">
-        </div>
-
-        <div class="sidebar">
-            <button class="toggle-btn">&lt;</button>
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-            <a href="#">Link 4</a>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>Rodapé - Informações adicionais aqui.</p>
-    </div>
-
-    <script src="script.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".menu-btn").click(function () {
-                $(".menu-list").slideToggle(300);
-            });
-
-            $(".toggle-btn").click(function () {
-                $(".sidebar").toggleClass("collapsed");
-            });
-
-            function checkWindowSize() {
-                if ($(window).width() < 768) {
-                    $(".menu-list").hide();
-                    $(".menu-btn").show();
-                    $(".sidebar").addClass("collapsed");
-                } else {
-                    $(".menu-list").show();
-                    $(".menu-btn").hide();
-                    $(".sidebar").removeClass("collapsed");
-                }
-            }
-
-            $(window).resize(checkWindowSize);
-            checkWindowSize();
-        });
-    </script>
 </body>
 </html>

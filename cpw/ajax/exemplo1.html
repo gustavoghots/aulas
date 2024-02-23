@@ -1,0 +1,20 @@
+<html lang="pb-BR">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Lista Pessoas</h1>
+        <ul id="lista_pessoas">
+            <script>
+                $.ajax({
+                    url:'dados.json',
+                    dataType:'json',
+                    success: function(data){
+                        
+                    }
+                })
+            </script>
+        </ul>
+    </body>
+</html>

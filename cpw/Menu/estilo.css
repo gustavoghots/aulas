@@ -86,6 +86,7 @@ body {
 }
 
 .sidebar a {
+    vertical-align: top;
     text-decoration: none;
     color: white;
     padding: 8px;
@@ -132,5 +133,5 @@ body {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: auto;
+    margin-top: 0px;
 }

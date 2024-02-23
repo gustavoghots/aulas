@@ -1,0 +1,3 @@
+numero= int(input())
+teste = numero/60
+print({teste})
