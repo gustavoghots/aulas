@@ -1,7 +1,7 @@
 <?php
     class Categoria {
         private $idCategoria;
-        private $descricao
+        private $descricao;
 
         // Métodos Get
         public function getIdCategoria() {
