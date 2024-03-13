@@ -1,6 +1,7 @@
 <?php
     include_once"usuario.class.php";
     class Usuario_DAO {
+        private $conexao;
         public function __construct(){
             $this->conexao = new PDO("mysql:host=localhost;dbname=padel","root","");
         }
