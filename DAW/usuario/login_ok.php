@@ -15,9 +15,18 @@
     if($retorno){
         $retorno = $objUsuarioDAO->senha($objUsuario);
         if($retorno){
-            echo "logado <br>";
-            echo password_hash($objUsuario->getSenha(), PASSWORD_BCRYPT)."<br>";
-            //print_r($retorno);
+            //echo "logado <br>";
+            //echo password_hash($objUsuario->getSenha(), PASSWORD_BCRYPT)."<br>";
+            $usuario=$objUsuarioDAO->dados($objUsuario);
+            $objUsuario->setIdUsuario($usuario[0]);
+            $objUsuario->setUsuario($usuario[1]);
+            $objUsuario->setsenha($usuario[2]);
+            $objUsuario->setCPF($usuario[3]);
+            $objUsuario->setEmail($usuario[4]);
+            $objUsuario->setNumero($usuario[5]);
+            $objUsuario->setAdm($usuario[6]);
+            print_r($objUsuario);
+            
         }else{
             $_SESSION['senha_erro'] = TRUE;
             $_SESSION['log_val'] = $_POST['email'];

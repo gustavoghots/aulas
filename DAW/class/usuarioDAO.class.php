@@ -17,5 +17,11 @@
             $sql->execute();
             return $sql->fetch();
         }
+        public function dados(usuario $usuario){
+            $sql = $this->conexao->prepare("select * from usuario where email = :login or usuario = :login");
+            $sql->bindValue(":login", $usuario->getUsuario());
+            $sql->execute();
+            return $sql->fetch();
+        }
     }
 ?>
