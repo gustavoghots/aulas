@@ -1,5 +1,6 @@
 <pre>
 <?php
+    session_start();
     include_once "../class/usuario.class.php";
     include_once "../class/usuarioDAO.class.php";
     $login = $_POST["login"];
@@ -11,30 +12,19 @@
 
     $objUsuarioDAO = new usuario_DAO();
     $retorno = $objUsuarioDAO->login($objUsuario);
-    session_start();
-    if($retorno){
-        $retorno = $objUsuarioDAO->senha($objUsuario);
-        if($retorno){
-            //echo "logado <br>";
-            //echo password_hash($objUsuario->getSenha(), PASSWORD_BCRYPT)."<br>";
-            $usuario=$objUsuarioDAO->dados($objUsuario);
-            $objUsuario->setIdUsuario($usuario[0]);
-            $objUsuario->setUsuario($usuario[1]);
-            $objUsuario->setsenha($usuario[2]);
-            $objUsuario->setCPF($usuario[3]);
-            $objUsuario->setEmail($usuario[4]);
-            $objUsuario->setNumero($usuario[5]);
-            $objUsuario->setAdm($usuario[6]);
-            print_r($objUsuario);
-            
-        }else{
-            $_SESSION['senha_erro'] = TRUE;
-            $_SESSION['log_val'] = $_POST['email'];
-            header('Location: login.php');
-        }
+    
+    if($retorno==0){
+        header('Location:login.php?login='.$login);
+    }else if($retorno==1){
+        header('Location:login.php?senha&login='.$login);
     }else{
-        $_SESSION['log_erro'] = TRUE;
-        $_SESSION['log_val'] = $_POST['email'];
-        header('Location: login.php');
+        if($retorno['adm']==true){
+            $_SESSION['idAdm']=$retorno['idUsuario'];
+            header("Location:adm/index.php");
+        }else{
+            $_SESSION['idUsuario']=$retorno['idUsuario'];
+            header("Location:usuario/index.php");
+        }
+        $_SESSION["logado"]=true;
     }
 ?>
