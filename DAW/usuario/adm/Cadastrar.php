@@ -8,7 +8,7 @@
     <title>Cadastro ADM</title>
     <?php
     session_start();
-        if(!isset($_SESSION['logado'])){
+        if(!isset($_SESSION['logadoADM'])){
             header("Location=../login.php");
         }
     ?>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-6 oi">
-                    <form action="" method="POST">
+                    <form action="Cadastrar_ok.php" method="POST">
                         <div class="form-group">
                             <label for="usuario">Usuário:</label>
                             <input type="text" id="usuario" name="usuario" class="form-control" required>
@@ -48,10 +48,12 @@
                             <input type="text" id="numero" name="numero" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
+                        <?php
+                            if(isset($_GET['admOk'])) echo "Erro ao cadastrar usuario";
+                        ?>
                     </form>        
                 </div>                   
             </div>
-         
         </div>                
     </div>
 </body>

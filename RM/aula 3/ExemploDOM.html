@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste DOM</title>
+</head>
+<body>
+    <button onclick="moverElemento()">MoverElemento</button>
+    <script>
+        function moverElemento(){
+            let elemento = document.getElementById("target");
+            elemento.style.position = "absolute";
+            elemento.style.left = (Math.floor(Math.random() * 90))+"%"
+            elemento.style.top = (Math.floor(Math.random() * 90))+"%"
+            elemento.style.backgroundColor = "blue";
+        }
+    </script>
+    <div id="target" style="height: 100px; width: 100px;"></div>
+</body>
+</html>
