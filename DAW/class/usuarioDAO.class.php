@@ -45,5 +45,28 @@
             $sql->execute();
             return $sql->fetchAll();
         }
+        public function excluir($id){
+            $sql= $this->conexao->prepare("delete from usuario where idusuario=:id");
+            $sql->bindValue(":id",$id);
+            return $sql->execute();
+        }
+        public function retornarADM($idUsuario){
+            $sql= $this->conexao->prepare("select * from usuario where  idusuario = :idUsuario");
+            $sql->bindValue(":idUsuario",$idUsuario);
+            $sql->execute();
+            return $sql->fetch();
+        }
+        public function editar(usuario $objUsuario){
+            $sql= $this->conexao->prepare("update usuario 
+            set usuario = :usuario,senha = :senha,CPF = :CPF,email = :email,numero = :numero,adm = :adm where idUsuario = :idUsuario");
+            $sql->bindValue(":usuario",$objUsuario->getUsuario());
+            $sql->bindValue(":senha",$objUsuario->getSenha());
+            $sql->bindValue(":CPF",$objUsuario->getCPF());
+            $sql->bindValue(":email",$objUsuario->getEmail());
+            $sql->bindValue(":numero",$objUsuario->getNumero());
+            $sql->bindValue(":adm",$objUsuario->getAdm());
+            $sql->bindValue(":idUsuario",$objUsuario->getIdUsuario());
+            return $sql->execute();
+        }
     }
 ?>
