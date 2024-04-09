@@ -4,7 +4,7 @@
         header("Location=../login.php");
     }
     include_once '../../class/Usuario.class.php';
-    include_once '../../class/UsuarioDAO.class.php';
+    include_once '../../class/DAO/UsuarioDAO.class.php';
 
     $objUsuarioDAO = new Usuario_DAO();
     $idUsuario = $_GET['id'];

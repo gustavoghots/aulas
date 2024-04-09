@@ -2,7 +2,7 @@
 <?php
     session_start();
     include_once "../class/usuario.class.php";
-    include_once "../class/usuarioDAO.class.php";
+    include_once "../class/DAO/usuarioDAO.class.php";
     $login = $_POST["login"];
     $senha = $_POST["password"];
 

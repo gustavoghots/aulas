@@ -4,7 +4,7 @@
         header("Location=../login.php");
     }
     include_once '../../class/Usuario.class.php';
-    include_once '../../class/UsuarioDAO.class.php';
+    include_once '../../class/DAO/UsuarioDAO.class.php';
 
     if(isset($_GET['deleteOk'])){
         echo "<p style='color: red;'>Administrador excluido com sucesso</p>";

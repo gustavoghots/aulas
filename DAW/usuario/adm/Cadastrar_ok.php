@@ -3,8 +3,8 @@
     if(!isset($_SESSION['logadoADM'])){
         header("Location=../login.php");
     }
-    include_once '../../class/Usuario.class.php';
-    include_once '../../class/UsuarioDAO.class.php';
+    include_once '../class/Usuario.class.php';
+    include_once '../class/DAO/UsuarioDAO.class.php';
 
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
