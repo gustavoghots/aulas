@@ -47,6 +47,7 @@
                             <label for="numero">Número:</label>
                             <input type="text" id="numero" name="numero" class="form-control" required>
                         </div>
+                        <a href="index.php"><button type="button" class="btn btn-danger">Cancelar</button></a>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <?php
                             if(isset($_GET['error'])) echo "Erro ao cadastrar usuario";

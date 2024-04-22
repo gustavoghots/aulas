@@ -56,12 +56,14 @@
                             <select class="form-select" name="Categoria_idCategoria">
                             <option value="">-- Selecione --</option>
                                 <?php
-                                    $objCategoria = new Categoria_DAO();                                    foreach($objCategoria->listar() as $categoria){
-                                        echo "<option value='".$categoria['Categoria_idCategoria']."'>".$categoria['descricao']."</option>";
+                                    $objCategoria = new Categoria_DAO();
+                                        foreach($objCategoria->listar() as $categoria){
+                                        echo "<option value='".$categoria['idCategoria']."'>".$categoria['descricao']."</option>";
                                     }
                                 ?>
                             </select>
                         </div>
+                        <a href="../usuario/adm/index.php"><button type="button" class="btn btn-danger">Cancelar</button></a>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <?php
                             if(isset($_GET['error'])) echo "Erro ao cadastrar Produto";

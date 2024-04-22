@@ -7,7 +7,7 @@
         }
         public function inserir(Produto $produto){
             $sql= $this->conexao->prepare("
-            insert into categoria(nome,preco,descricao,imagem,oferta,qtd_estoque,Categoria_idCategoria)
+            insert into produto(nome,preco,descricao,imagem,oferta,qtd_estoque,Categoria_idCategoria)
             value(:nome,:preco,:descricao,:imagem,:oferta,:qtd_estoque,:Categoria_idCategoria)");
             $sql->bindValue(":nome",$produto->getNome());
             $sql->bindValue(":preco",$produto->getPreco());
@@ -19,27 +19,36 @@
             return $sql->execute();
         }
         public function listar(){
-            $sql= $this->conexao->prepare("select * from Produto");
+            $sql= $this->conexao->prepare("select p.*, c.descricao as categoria
+            from Produto p inner join categoria c on p.Categoria_idCategoria = c.idCategoria");
             $sql->execute();
             return $sql->fetchAll();
         }
-        /*public function excluir($id){
-            $sql= $this->conexao->prepare("delete from categoria where idCategoria=:id");
+        public function excluir($id){
+            $sql= $this->conexao->prepare("delete from produto where idProduto=:id");
             $sql->bindValue(":id",$id);
             return $sql->execute();
         }
-        public function retornarCategoria($idCategoria){
-            $sql= $this->conexao->prepare("select * from categoria where  idCategoria = :idCategoria");
-            $sql->bindValue(":idCategoria",$idCategoria);
+        public function retornarProduto($idProduto){
+            $sql= $this->conexao->prepare("select * from produto where idProduto = :idProduto");
+            $sql->bindValue(":idProduto",$idProduto);
             $sql->execute();
             return $sql->fetch();
         }
-        public function editar(Categoria $objCategoria){
-            $sql= $this->conexao->prepare("update categoria 
-            set descricao = :descricao where idCategoria = :idCategoria");
-            $sql->bindValue(":descricao",$objCategoria->getDescricao());
-            $sql->bindValue(":idCategoria",$objCategoria->getIdCategoria());
+        public function editar(Produto $produto){
+            $sql= $this->conexao->prepare("update produto 
+            set nome = :nome, preco = :preco,descricao = :descricao,imagem = :imagem,
+            oferta = :oferta,qtd_estoque = :qtd_estoque,Categoria_idCategoria = :Categoria_idCategoria
+            where idProduto = :idProduto");
+            $sql->bindValue(":nome",$produto->getNome());
+            $sql->bindValue(":preco",$produto->getPreco());
+            $sql->bindValue(":descricao",$produto->getDescricao());
+            $sql->bindValue(":imagem",$produto->getImagem());
+            $sql->bindValue(":oferta",$produto->isOferta());
+            $sql->bindValue(":qtd_estoque",$produto->getQtdEstoque());
+            $sql->bindValue(":Categoria_idCategoria",$produto->getCategoriaIdCategoria());
+            $sql->bindValue(":idProduto",$produto->getIdProduto());
             return $sql->execute();
-        }*/
+        }
     }
 ?>

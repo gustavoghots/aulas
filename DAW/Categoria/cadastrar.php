@@ -28,6 +28,7 @@
                             <label for="senha">Nome:</label>
                             <input type="text" id="nome" name="nome" class="form-control" required>
                         </div>
+                        <a href="../usuario/adm/index.php"><button type="button" class="btn btn-danger">Cancelar</button></a>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <?php
                             if(isset($_GET['error'])) echo "Erro ao cadastrar Categoria";

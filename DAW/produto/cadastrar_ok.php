@@ -16,20 +16,19 @@
     $nomeImagem = $_FILES['imagem']['name'];
     $tmpImagem = $_FILES['imagem']['tmp_name'];
     $direcao = "../img/".$nomeImagem;
-    if(move_uploaded_file($tmpImagem,$direcao)) echo "Arquivo adicionado";
-    else echo "Arquivo não adicionado";
+    if(!move_uploaded_file($tmpImagem,$direcao)) header("Location:cadastar.php?error");
 
     $objProduto = new Produto();
     $objProduto->setNome($nome);
-    $objProduto->setNome($preco);
-    $objProduto->setNome($descricao);
-    $objProduto->setNome($oferta);
-    $objProduto->setNome($nomeImagem);
-    $objProduto->setNome($qtd_estoque);
-    $objProduto->setNome($Categoria_idCategoria);
+    $objProduto->setPreco($preco);
+    $objProduto->setDescricao($descricao);
+    $objProduto->setOferta($oferta);
+    $objProduto->setImagem($nomeImagem);
+    $objProduto->setQtdEstoque($qtd_estoque);
+    $objProduto->setCategoriaIdCategoria($Categoria_idCategoria);
+    $objProduto->setImagem($nomeImagem);
 
-    /*$objCategoriaDAO = new Produto_DAO();
-    $retorno = $objCategoriaDAO->inserir($objCategoria);
+    $objCategoriaDAO = new Produto_DAO();
+    $retorno = $objCategoriaDAO->inserir($objProduto);
     if($retorno) header("Location:../usuario/adm/index.php?catOk");
-    else header("Location:cadastar.php?error");*/
 ?>
