@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <title>Canva</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        /* Criar 3 retângulos
+            preenchimento verde, borda vermelha
+            preenchimento amarelo, borda preta e sombra(5)
+            borda azul, centro canva*/
+                let canva = $("#canvas")[0].getContext('2d');
+                canva.strokeStyle = '#FF0000';
+                canva.lineWidth = 1;
+                canva.strokeRect(10,10,20,30);
+
+                canva.strokeStyle = '#000000';
+                canva.lineWidth = 1;
+                canva.fillStyle = '#ffff00';
+                canva.strokeRect(40,15,50,40);
+                
+                //canva.strokeStyle = 
+    </script>
+</body>
+</html>

@@ -9,17 +9,30 @@
         1 caracter especial
         */
         const senha = prompt("Digite sua senha");
-        console.log(validadeComplexidade());
+        console.log(validarSenha(senha));
 
-        function validadeComplexidade(){
-            if (senha.length >= 8 && senha.length <= 32){
-                if(/[0-9]/.test(senha) && /[A-Z]/.test(senha) && /[a-z]/.test(senha)){
-                    if(!senha.match(/\W/)){
-                        return 1;
-                    }
-                }
-            }
-            return 0;
+        function validarSenha(senha) {
+        var erros = [];
+        // Verificar comprimento mínimo
+        if (!senha) {
+            return "Não contém número mínimo caracteres, número, letra minúscula, letra maiúscula e caractere especial";
+        } else {
+            if (senha.length < 8) erros.push("número mínimo caracteres");
+            // Verificar se contém pelo menos uma letra minúscula
+            if (!/[a-z]/.test(senha)) erros.push("letra minúscula");
+            // Verificar se contém pelo menos uma letra maiúscula
+            if (!/[A-Z]/.test(senha)) erros.push("letra maiúscula");
+            // Verificar se contém pelo menos um dígito
+            if (!/\d/.test(senha)) erros.push("número");
+            // Verificar se contém pelo menos um caractere especial
+            if (!/[\W_]/.test(senha)) erros.push("caractere especial");
         }
+        // Retornar mensagens de erro
+        if (erros.length > 0) {
+            return "Não contém " + erros.join(", ");
+        } else {
+            return "Senha válida";
+        }
+    }
     </script>
 </html>

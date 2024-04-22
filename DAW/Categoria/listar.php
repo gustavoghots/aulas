@@ -17,7 +17,9 @@
 
     $objCategoriaDAO = new Categoria_DAO();
     $retorno = $objCategoriaDAO->listar();
-    
+?>
+    <p><a href="../usuario/adm/index.php">Voltar</a></p>
+<?php
     foreach ($retorno as $i => $linha) {
         ?>
         <div style="border:1px solid; margin-bottom:2px;">
