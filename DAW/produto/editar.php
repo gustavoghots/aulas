@@ -34,7 +34,7 @@
         <input type="file" id="imagem" name="imagem" class="form-control" accept="image/*"><br /><br />
 
         <label for="oferta">Oferta:</label><br />
-        <input type="text" id="oferta" name="oferta" value="<?=$retorno['oferta']?>" required><br /><br />
+        <input type="text" id="oferta" name="oferta" value="<?=$retorno['oferta']?>"><br /><br />
 
         <label for="qtd_estoque">Quantidade estoque:</label><br />
         <input type="text" id="qtd_estoque" name="qtd_estoque" value="<?=$retorno['qtd_estoque']?>" required><br /><br />

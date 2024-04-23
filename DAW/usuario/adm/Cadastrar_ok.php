@@ -20,18 +20,9 @@
     $objUsuario->setNumero($numero);
     $objUsuario->setAdm(true);
 
-    if(SenhaNosParametros($objUsuario)){
-        echo 'oi';
+    if($objUsuario->SenhaNosParametros()){
         $objUsuarioDAO = new Usuario_DAO();
         $retorno = $objUsuarioDAO->inserir($objUsuario);
     }
     if($retorno) header("Location:index.php?admOK");
     else header("Location:Cadastrar.php?error");
-
-    function SenhaNosParametros(Usuario $usuario) {
-        $senha = $usuario->getSenha();
-
-        if (isset($senha) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W\_]).{8,}$/", $senha))
-            return true;
-        else return false;
-    }

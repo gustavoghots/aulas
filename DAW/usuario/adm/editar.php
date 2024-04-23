@@ -23,8 +23,8 @@
         <label for="usuario">Usuário:</label><br />
         <input type="text" id="usuario" name="usuario" value="<?=$retorno['usuario']?>" required><br /><br />
                             
-        <label for="senha">Senha:</label><br />
-        <input type="password" id="senha" name="senha" value="<?=$retorno['senha']?>" required><br /><br />
+        <label for="senha">Trocar senha:</label><br />
+        <input type="password" id="senha" name="senha" value="" required><br /><br />
 
         <label for="CPF">CPF:</label><br />
         <input type="text" id="CPF" name="CPF" value="<?=$retorno['CPF']?>" required><br /><br />

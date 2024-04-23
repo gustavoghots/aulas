@@ -16,15 +16,24 @@
 
     $objUsuario = new Usuario();
     $objUsuario->setUsuario($usuario);
-    $objUsuario->setSenha($senha);
     $objUsuario->setCPF($CPF);
     $objUsuario->setEmail($email);
     $objUsuario->setNumero($numero);
     $objUsuario->setAdm($adm);
     $objUsuario->setIdUsuario($idUsuario);
+    $objUsuario->setSenha($senha);
 
     $objUsuarioDAO = new Usuario_DAO();
+    if(!$objUsuario->SenhaNosParametros() || $_SESSION['idAdm']!=$idUsuario){
+        header("Location:listar.php?atualizarNOk");
+        exit();
+        $senha = $objUsuarioDAO->retornarADM($idUsuario)['senha'];
+    }
+    $objUsuario->setSenha($senha);
+
     $retorno = $objUsuarioDAO->editar($objUsuario);
-    if($retorno) header("Location:listar.php?atualizarOk");
-    else header("Location:listar.php?atualizarNOk");
+    if($retorno) 
+        header("Location:listar.php?atualizarOk");
+    else 
+        header("Location:listar.php?atualizarNOk");
 ?>

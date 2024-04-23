@@ -11,8 +11,10 @@
     }elseif(isset($_GET['deleteNOk'])){
         echo "<p style='color: red;'>Não foi possivel deletar o usuario</p>";
     }
-    if(isset($_GET['atualizarOk'])) echo "<p style='color: red;'>Administrador atualizado com sucesso</p>";
-    elseif(isset($_GET['atualizarNOk'])) echo "<p style='color: red;'>Não foi possivel atualizar os dados ADM</p>";
+    if(isset($_GET['atualizarOk'])) 
+        echo "<p style='color: red;'>Administrador atualizado com sucesso</p>";
+    elseif(isset($_GET['atualizarNOk'])) 
+        echo "<p style='color: red;'>Não foi possivel atualizar os dados ADM</p>";
     
 
     $objUsuarioDAO = new Usuario_DAO();

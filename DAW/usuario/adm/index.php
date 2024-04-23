@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,10 @@
     </style>
 </head>
 <body>
-
+    <?php
+    if(isset($_GET['admOk'])) 
+        echo "Novo administrador cadastrado com sucesso!"
+    ?>
 <h2>Administração</h2>
 <a href="cadastrar.php">Cadastrar Administrador</a><br/><br/>
 <a href="listar.php">Listar Administrador</a><br/><br/>
