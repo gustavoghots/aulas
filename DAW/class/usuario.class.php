@@ -1,4 +1,5 @@
 <?php
+    @include_once 'DAO/usuarioDAO.class.php';
     class usuario {
         private $idUsuario;
         private $usuario;

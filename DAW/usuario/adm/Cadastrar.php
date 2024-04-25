@@ -14,7 +14,19 @@
     ?>
 </head>
 <body class="h-100">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#senha').on("keyup", function(){
+                let senha = $(this).val();
+                let valido = validarSenha(senha);
+                console.log(valido);
+                $('#texto_senha').text(valido);
+            });
+        });
+    </script>
     <div class="container h-100">
         <div class="row align-content-center justify-content-center h-100">
             <div class="row justify-content-center block-blox shadow-sm">
@@ -32,6 +44,7 @@
                         <div class="form-group mb-2">
                             <label for="senha">Senha:</label>
                             <input type="password" id="senha" name="senha" class="form-control" required>
+                            <div class="form-text" id="texto_senha"></div>
                         </div>
 
                         <div class="form-group mb-2">

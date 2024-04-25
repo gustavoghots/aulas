@@ -10,21 +10,42 @@
 <body>
     <canvas id="canvas"></canvas>
     <script>
-        /* Criar 3 retângulos
-            preenchimento verde, borda vermelha
-            preenchimento amarelo, borda preta e sombra(5)
-            borda azul, centro canva*/
-                let canva = $("#canvas")[0].getContext('2d');
-                canva.strokeStyle = '#FF0000';
-                canva.lineWidth = 1;
-                canva.strokeRect(10,10,20,30);
+        let canvas = $("#canvas")[0];
+        let ctx = canvas.getContext('2d');
 
-                canva.strokeStyle = '#000000';
-                canva.lineWidth = 1;
-                canva.fillStyle = '#ffff00';
-                canva.strokeRect(40,15,50,40);
-                
-                //canva.strokeStyle = 
+        // Primeiro retângulo: preenchimento verde, borda vermelha
+        ctx.strokeStyle = '#FF0000';
+        ctx.fillStyle = '#00FF00';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(10, 10, 20, 30);
+        ctx.fillRect(10, 10, 20, 30);
+
+        // Segundo retângulo: preenchimento amarelo, borda preta e sombra(5)
+        ctx.strokeStyle = '#000000';
+        ctx.fillStyle = '#FFFF00';
+        ctx.shadowColor = '#000000';
+        ctx.shadowBlur = 5;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(40, 15, 50, 40);
+        ctx.fillRect(40, 15, 50, 40);
+
+        // Terceiro retângulo: borda azul, centro do canvas
+        let centerX = canvas.width / 2;
+        let centerY = canvas.height / 2;
+        let rectWidth = 80;
+        let rectHeight = 60;
+
+        ctx.strokeStyle = '#0000FF'; // Borda azul
+        ctx.fillStyle = '#FFFFFF'; // Preenchimento branco
+        ctx.shadowColor = null; // Removendo sombra
+        ctx.lineWidth = 2;
+
+        // Calculando as coordenadas para o retângulo central
+        let rectX = centerX - rectWidth / 2;
+        let rectY = centerY - rectHeight / 2;
+
+        ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
     </script>
 </body>
 </html>

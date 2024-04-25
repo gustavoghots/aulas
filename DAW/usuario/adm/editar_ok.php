@@ -24,7 +24,8 @@
     $objUsuario->setSenha($senha);
 
     $objUsuarioDAO = new Usuario_DAO();
-    if(!$objUsuario->SenhaNosParametros() || $_SESSION['idAdm']!=$idUsuario){
+    if(!$objUsuario->SenhaNosParametros() || $_SESSION['idAdm']!=$idUsuario 
+    && $objUsuarioDAO->retornarADM($idUsuario)['senha'] != $objUsuario->getSenha()){
         header("Location:listar.php?atualizarNOk");
         exit();
         $senha = $objUsuarioDAO->retornarADM($idUsuario)['senha'];

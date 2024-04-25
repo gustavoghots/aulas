@@ -18,6 +18,18 @@
     <title>Editar dados ADM</title>
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#senha').on("keyup", function(){
+                let senha = $(this).val();
+                let valido = validarSenha(senha);
+                console.log(valido);
+                $('#texto_senha').text(valido);
+            });
+        });
+    </script>
     <form action="editar_ok.php" method="POST">
                             
         <label for="usuario">Usuário:</label><br />
@@ -25,6 +37,7 @@
                             
         <label for="senha">Trocar senha:</label><br />
         <input type="password" id="senha" name="senha" value="" required><br /><br />
+        <div id="texto_senha"></div>
 
         <label for="CPF">CPF:</label><br />
         <input type="text" id="CPF" name="CPF" value="<?=$retorno['CPF']?>" required><br /><br />
