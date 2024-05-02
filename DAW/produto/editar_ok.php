@@ -10,7 +10,6 @@
     $nome = $_POST["nome"];
     $descricao = $_POST["descricao"];
     $preco = $_POST["preco"];
-    $oferta = $_POST["oferta"];
     $qtd_estoque = $_POST["qtd_estoque"];
     $idCategoria = $_POST['categoria'];
 
@@ -19,15 +18,17 @@
         $tmpImagem = $_FILES['imagem']['tmp_name'];
         $direcao = "../img/".$nomeImagem;
         if(!move_uploaded_file($tmpImagem,$direcao)) header("Location:editar.php?error");
-    }else 
-        $nomeImagem = null;
+    }else{
+        $objProdutoDAO = new Produto_DAO();
+        $nomeImagem = $objProdutoDAO->retornarProduto($idProduto)['imagem'];        
+    }
+
 
     $objProduto = new Produto();
     $objProduto->setIdProduto($idProduto);
     $objProduto->setNome($nome);
     $objProduto->setDescricao($descricao);
     $objProduto->setPreco($preco);
-    $objProduto->setOferta($oferta);
     $objProduto->setQtdEstoque($qtd_estoque);
     $objProduto->setImagem($nomeImagem);
     $objProduto->setCategoriaIdCategoria($idCategoria);

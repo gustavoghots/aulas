@@ -1,51 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-    <title>Canva</title>
+    <title>Canvas</title>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <script>
         let canvas = $("#canvas")[0];
         let ctx = canvas.getContext('2d');
 
-        // Primeiro retângulo: preenchimento verde, borda vermelha
         ctx.strokeStyle = '#FF0000';
         ctx.fillStyle = '#00FF00';
         ctx.lineWidth = 1;
         ctx.strokeRect(10, 10, 20, 30);
         ctx.fillRect(10, 10, 20, 30);
 
-        // Segundo retângulo: preenchimento amarelo, borda preta e sombra(5)
         ctx.strokeStyle = '#000000';
         ctx.fillStyle = '#FFFF00';
         ctx.shadowColor = '#000000';
         ctx.shadowBlur = 5;
-        ctx.lineWidth = 1;
-        ctx.strokeRect(40, 15, 50, 40);
-        ctx.fillRect(40, 15, 50, 40);
+        ctx.lineWidth = 2;
+        ctx.strokeRect(230, 145, 200, 350);
+        ctx.fillRect(230, 145, 200, 350);
 
-        // Terceiro retângulo: borda azul, centro do canvas
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
         let rectWidth = 80;
         let rectHeight = 60;
 
-        ctx.strokeStyle = '#0000FF'; // Borda azul
-        ctx.fillStyle = '#FFFFFF'; // Preenchimento branco
-        ctx.shadowColor = null; // Removendo sombra
+        ctx.strokeStyle = '#0000FF';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = null;
         ctx.lineWidth = 2;
 
-        // Calculando as coordenadas para o retângulo central
         let rectX = centerX - rectWidth / 2;
         let rectY = centerY - rectHeight / 2;
 
         ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+        ctx.beginPath();
+        ctx.fillStyle = '#FF0000';
+        ctx.arc(400, 100, 50, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#042940';
+        ctx.fillStyle = '#DBF227';
+        ctx.lineWidth = 2;
+        ctx.arc(150, 300, 50, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = '#0000FF';
+        ctx.moveTo(250, 400);
+        ctx.lineTo(300, 450);
+        ctx.lineTo(200, 450);
+        ctx.closePath();
+        ctx.fill();
     </script>
 </body>
 </html>

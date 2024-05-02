@@ -8,6 +8,7 @@
         private $oferta;
         private $qtd_estoque;
         private $Categoria_idCategoria;
+        private $preco_oferta;
 
         // Métodos Get
         public function getIdProduto() {
@@ -30,7 +31,7 @@
             return $this->imagem;
         }
 
-        public function isOferta() {
+        public function getOferta() {
             return $this->oferta;
         }
 
@@ -40,6 +41,10 @@
 
         public function getCategoriaIdCategoria() {
             return $this->Categoria_idCategoria;
+        }
+
+        public function getPrecoOferta(){
+            return $this->preco_oferta;
         }
 
         // Métodos Set
@@ -65,6 +70,7 @@
 
         public function setOferta($oferta) {
             $this->oferta = $oferta;
+            $this->preco_oferta = $this->preco-($this->oferta*0.01*$this->preco);
         }
 
         public function setQtdEstoque($qtd_estoque) {

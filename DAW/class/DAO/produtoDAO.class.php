@@ -13,7 +13,7 @@
             $sql->bindValue(":preco",$produto->getPreco());
             $sql->bindValue(":descricao",$produto->getDescricao());
             $sql->bindValue(":imagem",$produto->getImagem());
-            $sql->bindValue(":oferta",$produto->isOferta());
+            $sql->bindValue(":oferta",$produto->getOferta());
             $sql->bindValue(":qtd_estoque",$produto->getQtdEstoque());
             $sql->bindValue(":Categoria_idCategoria",$produto->getCategoriaIdCategoria());
             return $sql->execute();
@@ -38,15 +38,21 @@
         public function editar(Produto $produto){
             $sql= $this->conexao->prepare("update produto 
             set nome = :nome, preco = :preco,descricao = :descricao,imagem = :imagem,
-            oferta = :oferta,qtd_estoque = :qtd_estoque,Categoria_idCategoria = :Categoria_idCategoria
+            qtd_estoque = :qtd_estoque,Categoria_idCategoria = :Categoria_idCategoria
             where idProduto = :idProduto");
             $sql->bindValue(":nome",$produto->getNome());
             $sql->bindValue(":preco",$produto->getPreco());
             $sql->bindValue(":descricao",$produto->getDescricao());
             $sql->bindValue(":imagem",$produto->getImagem());
-            $sql->bindValue(":oferta",$produto->isOferta());
             $sql->bindValue(":qtd_estoque",$produto->getQtdEstoque());
             $sql->bindValue(":Categoria_idCategoria",$produto->getCategoriaIdCategoria());
+            $sql->bindValue(":idProduto",$produto->getIdProduto());
+            return $sql->execute();
+        }
+        public function ofertar(Produto $produto){
+            $sql= $this->conexao->prepare("update produto set oferta = :oferta
+            where idProduto=:idProduto");
+            $sql->bindValue(":oferta",$produto->getOferta());
             $sql->bindValue(":idProduto",$produto->getIdProduto());
             return $sql->execute();
         }

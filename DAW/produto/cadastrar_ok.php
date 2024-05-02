@@ -30,5 +30,6 @@
 
     $objCategoriaDAO = new Produto_DAO();
     $retorno = $objCategoriaDAO->inserir($objProduto);
-    if($retorno) header("Location:../usuario/adm/index.php?catOk");
+    $oferta = $objCategoriaDAO->ofertar($objProduto);
+    if($retorno && $oferta) header("Location:../usuario/adm/index.php?catOk");
 ?>

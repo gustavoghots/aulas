@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="oferta">Oferta:</label>
-                            <input type="number" id="oferta" name="oferta" class="form-control">
+                            <input type="number" id="oferta" name="oferta" class="form-control" placeholder="colocar em %">
                         </div>
                         <div class="form-group mb-2">
                             <label for="qtd_estoque">Quantidade:</label>

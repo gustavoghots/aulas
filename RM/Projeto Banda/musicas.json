@@ -1,0 +1,21 @@
+[
+    {
+      "nome": "Musica1",
+      "artista": "Artista1",
+      "arquivo": ["musica1_artista1.mp3"],
+      "duracao": "3:42"
+    },
+    {
+      "nome": "Musica2",
+      "artista": "Artista2",
+      "arquivo": ["musica2_artista2.mp3"],
+      "duracao": "4:15"
+    },
+    {
+      "nome": "Musica3",
+      "artista": "Artista3",
+      "arquivo": ["musica3_artista3.mp3"],
+      "duracao": "5:20"
+    }
+  ]
+  
