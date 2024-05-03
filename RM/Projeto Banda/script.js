@@ -27,16 +27,17 @@ function chamarMusicas() {
                 musicas.push(novaMusica);
 
                 // Escrever os dados processados no arquivo musicas.json
-                escreverNoArquivo(musicas);
             });
 
             // Carregar o vídeo para obter a duração
             video.load();
         });
+        return(musicas);
     }
 
     // Função para escrever os dados no arquivo musicas.json
-    function escreverNoArquivo(dados) {
+    /*function escreverNoArquivo(dados) {
+        console.log(dados);
         let jsonData = JSON.stringify(dados);
         console.log(jsonData);
     
@@ -53,7 +54,7 @@ function chamarMusicas() {
                 console.error('Erro ao gravar dados no arquivo musicas.json:', error);
             }
         });
-    }
+    }*/
     
 
     // Chamada AJAX para obter a lista de arquivos de música
@@ -72,7 +73,7 @@ function chamarMusicas() {
             // Remover os primeiros 5 elementos que são os cabeçalhos da tabela
             fileLinks = fileLinks.slice(5);
     
-            processarArquivos(fileLinks);
+            console.log(processarArquivos(fileLinks));
         },
         error: function (xhr, status, error) {
             console.error('Erro ao obter lista de arquivos:', error);
