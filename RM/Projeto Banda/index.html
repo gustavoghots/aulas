@@ -14,15 +14,22 @@
 </head>
 
 <body class="h-100">
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="script.js"></script>
-  <section class="smoke h-100 align-content-center justify-content-center">
+  <section class="smoke h-100 align-content-center justify-content-center" id="inicio">
     <div class="video-container background">
       <video autoplay muted loop src="BancoImagens/smokeSide.mp4" id="BackSmoke"></video>
     </div>
-    <nav class="navbar navbar-expand-lg bg-body-primary roboto">
+    <div
+      class="voltar-container subir bg-dark rounded-circle align-content-center justify-content-center d-none flex-wrap border border-secondary">
+      <button class="btn btn-Dark "><a aria-current="page" href="#"><img
+            src="BancoImagens/icones/arrow-small-up.png"></a></button>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-primary roboto" id="navbar">
       <div class="container-fluid justify-content-center bg-body-primary">
         <img src="BancoImagens/Logo.png" width="259px" class="d-inline-block align-text-top navbar-brand">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -35,21 +42,24 @@
               <strong><a class="nav-link active" aria-current="page" href="#">Inicio</a></strong>
             </li>
             <li>
-              <a class="nav-link active" aria-current="page" href="#">Bibliografia</a>
+              <a class="nav-link active" aria-current="page" href="#musicas">Musicas</a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="#biografia">Biografia</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="row justify-content-md-center align-content=md-center h-75 g-0" id="VideoPrincipal">
+    <div class="row justify-content-md-center align-content=md-center h-100 g-0" id="VideoPrincipal">
       <div class="col-12 justify-content-md-center align-content-md-center d-flex">
         <video class="object-fit-contain pop" controls poster="BancoImagens/CapaCareless.jpg">
-          <source src="BancoImagens/musicas/Careless_NEFFEX.mp4">
+          <source src="BancoImagens/videos/Careless_NEFFEX.mp4">
         </video>
       </div>
     </div>
   </section>
-  <section class="smoke h-100 align-content-center justify-content-center">
+  <section class="smoke h-100 align-content-center justify-content-center" id="musicas">
     <div class="video-container background">
       <video autoplay muted loop src="BancoImagens/smokeRight.mp4" id="BackSmoke"></video>
     </div>
@@ -64,7 +74,7 @@
               PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ5MiA0OTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5MiA0OTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDY0LjM0NCwyMDcuNDE4bDAuNzY4LDAuMTY4SDEzNS44ODhsMTAzLjQ5Ni0xMDMuNzI0YzUuMDY4LTUuMDY0LDcuODQ4LTExLjkyNCw3Ljg0OC0xOS4xMjQgICAgYzAtNy4yLTIuNzgtMTQuMDEyLTcuODQ4LTE5LjA4OEwyMjMuMjgsNDkuNTM4Yy01LjA2NC01LjA2NC0xMS44MTItNy44NjQtMTkuMDA4LTcuODY0Yy03LjIsMC0xMy45NTIsMi43OC0xOS4wMTYsNy44NDQgICAgTDcuODQ0LDIyNi45MTRDMi43NiwyMzEuOTk4LTAuMDIsMjM4Ljc3LDAsMjQ1Ljk3NGMtMC4wMiw3LjI0NCwyLjc2LDE0LjAyLDcuODQ0LDE5LjA5NmwxNzcuNDEyLDE3Ny40MTIgICAgYzUuMDY0LDUuMDYsMTEuODEyLDcuODQ0LDE5LjAxNiw3Ljg0NGM3LjE5NiwwLDEzLjk0NC0yLjc4OCwxOS4wMDgtNy44NDRsMTYuMTA0LTE2LjExMmM1LjA2OC01LjA1Niw3Ljg0OC0xMS44MDgsNy44NDgtMTkuMDA4ICAgIGMwLTcuMTk2LTIuNzgtMTMuNTkyLTcuODQ4LTE4LjY1MkwxMzQuNzIsMjg0LjQwNmgzMjkuOTkyYzE0LjgyOCwwLDI3LjI4OC0xMi43OCwyNy4yODgtMjcuNnYtMjIuNzg4ICAgIEM0OTIsMjE5LjE5OCw0NzkuMTcyLDIwNy40MTgsNDY0LjM0NCwyMDcuNDE4eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojODQ4NzhBIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCI+PC9wYXRoPgoJPC9nPgo8L2c+PC9nPiA8L3N2Zz4=">
               </div>
             </button>
-            <p class="indicator">PLAYING NOW</p>
+            <p class="indicator">TOP 3 MUSICAS</p>
             <button class="small">
               <div class="inner_button">
                 <img style="height: 10px;"
@@ -77,20 +87,20 @@
             <img class="album" src="https://upload.wikimedia.org/wikipedia/en/f/f3/EVOL_by_Future_cover.jpg">
           </div>
           <div class="song_details">
-            <div style="font-size: 20px;">Low Life</div>
-            <div style="margin-top: 7px;font-size: 10px;">Future ft. The Weeknd</div>
+            <div style="font-size: 20px;" id="nomeMusica">Loading</div>
+            <div style="margin-top: 7px;font-size: 10px;" id="artistaMusica">Loading</div>
           </div>
           <div class="slider">
             <div class="time">
-              <div>1:17</div>
-              <div>2:46</div>
+              <div id="tempoAtual">Loading</div>
+              <div id="duracao">Loading</div>
             </div>
             <div class="slider_bar">
               <div class="inner_slider_bar"></div>
             </div>
           </div>
           <div class="controls">
-            <button class="big">
+            <button class="big back">
               <div class="inner_button_big">
                 <img style="height: 15px; transform: scale(-1);"
                   src="data:image/svg+xml;base64,
@@ -104,7 +114,7 @@
               PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzIwLjAwMSAzMjAuMDAxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMjAuMDAxIDMyMC4wMDE7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGc+PHBhdGggZD0iTTI5NS44NCwxNDYuMDQ5bC0yNTYtMTQ0Yy00Ljk2LTIuNzg0LTExLjAwOC0yLjcyLTE1LjkwNCwwLjEyOEMxOS4wMDgsNS4wNTcsMTYsMTAuMzA1LDE2LDE2LjAwMXYyODggIGMwLDUuNjk2LDMuMDA4LDEwLjk0NCw3LjkzNiwxMy44MjRjMi40OTYsMS40NCw1LjI4LDIuMTc2LDguMDY0LDIuMTc2YzIuNjg4LDAsNS40MDgtMC42NzIsNy44NC0yLjA0OGwyNTYtMTQ0ICBjNS4wMjQtMi44NDgsOC4xNi04LjE2LDguMTYtMTMuOTUyUzMwMC44NjQsMTQ4Ljg5NywyOTUuODQsMTQ2LjA0OXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD48L2c+IDwvc3ZnPg==">
               </div>
             </button>
-            <button class="big">
+            <button class="big next">
               <div class="inner_button_big">
                 <img style="height: 15px;"
                   src="data:image/svg+xml;base64,
@@ -113,13 +123,93 @@
             </button>
           </div>
         </div>
+        <audio id="audioPlayer">
+          <source src="" class="musicaAtual">
+          <source src="" class="musicaAtual">
+        </audio>
       </div>
     </div>
   </section>
-  <script>
-    $(document).ready(function(){
-      console.log(chamarMusicas());
-    });
-  </script>
+  <section class="smoke h-100 align-content-center justify-content-center" id="biografia">
+    <div class="video-container background">
+      <video autoplay muted loop src="BancoImagens/smokeStatic.mp4" id="BackSmoke"></video>
+    </div>
+    <div class="container-fluid h-100 w-75 align-content-center justify-content-center d-flex flex-wrap">
+      <h1 class="pb-3 text-white">BIOGRAPHY</h1>
+      <div id="myCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-indicators mb-1">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"
+            aria-current="true"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+            aria-current="true"></button>
+        </div>
+        <div class="carousel-inner bg-dark rounded">
+          <div class="carousel-item active">
+            <div class="row h-100">
+              <div class="col-md-7 order-md-2">
+                <h1 class="text-muted">Bryce Savage
+                </h1>
+                <p class="lead">Singer of NEFFEX, has more than 200 songs copyright-free for content creator to use,
+                  spanning a variety of genres, vibes and moods every wednesday. His porpuse is to create musics to
+                  inspire
+                  people to porsue his future and cope with life.
+                </p>
+              </div>
+              <div class="col-md-5 order-md-1">
+                <img src="BancoImagens/Bryce Savage.jpg" class="img-fluid rounded">
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row h-100">
+              <div class="col-md-7 order-md-2">
+                <h1 class="text-muted">Cameron Wales
+                </h1>
+                <p class="lead">Melody compositor, responsible for all the beat and identity of the project.
+                  Started as a solo singer but decided to take part on it and create 100 musics in 100 weeks,
+                  motivated by his partner, it was done.
+                </p>
+              </div>
+              <div class="col-md-5 order-md-1">
+                <img src="BancoImagens/Cameron Wales.jpeg" class="img-fluid rounded">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-secondary rounded-circle" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-secondary rounded-circle" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-body-tertiary text-center text-lg-start">
+    <div class="container p-4 pb-0">
+      <form action="mail.php" method="post">
+        <div class="row">
+          <div class="col-auto mb-4 mb-md-0">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <div class="col-md-5 col-12 mb-4 mb-md-0">
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="email" id="email" name="email" class="form-control" placeholder="E-mail address" />
+            </div>
+          </div>
+          <div class="col-auto mb-4 mb-md-0">
+            <button data-mdb-ripple-init type="button" class="btn btn-primary mb-4">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </footer>
 </body>
+
 </html>
