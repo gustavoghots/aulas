@@ -42,7 +42,7 @@ $retorno = $objProdutosDAO->retornarProduto($id);
     </style>
 </head>
 <body>
-
+<p><a href="listar.php">Voltar</a></p>
 <h1>Detalhes do Produto</h1>
 
 <table>
@@ -64,7 +64,7 @@ $retorno = $objProdutosDAO->retornarProduto($id);
     </tr>
     <tr>
         <th>Imagem</th>
-        <td><img src="<?php echo $retorno['imagem']; ?>" alt="Imagem do Produto" class="product-image"></td>
+        <td><img src="<?php echo "../img/".$retorno['imagem']; ?>" alt="Imagem do Produto" class="product-image"></td>
     </tr>
 </table>
 
