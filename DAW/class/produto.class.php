@@ -69,8 +69,11 @@
         }
 
         public function setOferta($oferta) {
-            $this->oferta = $oferta;
-            $this->preco_oferta = $this->preco-($this->oferta*0.01*$this->preco);
+            if($oferta!=null){
+                $this->oferta = $oferta;
+                $this->preco_oferta = $this->preco-($this->oferta*0.01*$this->preco); 
+            }else
+                $this->preco_oferta = $this->preco;
         }
 
         public function setQtdEstoque($qtd_estoque) {

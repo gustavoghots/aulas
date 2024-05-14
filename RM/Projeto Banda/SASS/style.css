@@ -134,7 +134,6 @@ body {
   display: flex;
   justify-content: center;
   vertical-align: middle;
-  /* align-self: center; */
   align-items: center;
 }
 

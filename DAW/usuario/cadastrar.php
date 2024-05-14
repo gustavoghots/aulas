@@ -31,7 +31,7 @@
         <div class="row align-content-center justify-content-center h-100">
             <div class="row justify-content-center block-blox shadow-sm">
                 <div class="col-12 mt-5">
-                    <h1 class="text-center">Cadastrar ADM</h1>
+                    <h1 class="text-center">Criar Conta</h1>
                 </div>
 
                 <div class="col-6 oi">
@@ -49,7 +49,7 @@
 
                         <div class="form-group mb-2">
                             <label for="CPF">CPF:</label>
-                            <input type="text" id="CPF" name="CPF" class="form-control" required>
+                            <input type="text" id="CPF" name="CPF" class="form-control" required maxlength="15" minlength="11">
                         </div>
                         
                         <div class="form-group mb-2">

@@ -3,8 +3,8 @@
     if(!isset($_SESSION['logadoADM'])){
         header("Location=../login.php");
     }
-    include_once '../../class/usuario.class.php';
-    include_once '../../class/DAO/UsuarioDAO.class.php';
+    include_once '../class/usuario.class.php';
+    include_once '../class/DAO/UsuarioDAO.class.php';
 
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
@@ -25,4 +25,7 @@
         $retorno = $objUsuarioDAO->inserir($objUsuario);
     }
     if($retorno) header("Location:index.php");
-    else header("Location:Cadastrar.php?error");
+    else {
+        header("Location:Cadastrar.php?error");
+        exit();
+    }

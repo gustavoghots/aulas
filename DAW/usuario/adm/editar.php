@@ -38,7 +38,7 @@ $retorno = $objUsuarioDAO->retornarADM($idUsuario);
         <input type="text" id="usuario" name="usuario" value="<?= $retorno['usuario'] ?>" required><br /><br />
 
         <label for="senha">Trocar senha:</label><br />
-        <input type="password" id="senha" name="senha" value="" required><br /><br />
+        <input type="password" id="senha" name="senha" value=""><br /><br />
         <div id="texto_senha"></div>
 
         <label for="CPF">CPF:</label><br />
@@ -57,7 +57,7 @@ $retorno = $objUsuarioDAO->retornarADM($idUsuario);
         <input type="hidden" name="idUsuario" value="<?= $retorno['idUsuario'] ?>">
 
         <button type="submit">Enviar</button>
-        <a href="listar.php"><button>cancelar</button></a>
+        <a href="listar.php"><button type="button">cancelar</button></a>
     </form>
 </body>
 

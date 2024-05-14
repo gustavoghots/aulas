@@ -27,7 +27,7 @@ $retorno = $objCategoriaDAO->retornarCategoria($idCategoria);
 
         <input type="hidden" name="idCategoria" value="<?= $retorno['idCategoria'] ?>">
         <button type="submit">Enviar</button>
-        <a href="listar.php"><button>cancelar</button></a>
+        <a href="listar.php"><button type="button">cancelar</button></a>
     </form>
 </body>
 
