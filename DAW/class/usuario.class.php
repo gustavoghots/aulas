@@ -11,10 +11,7 @@
 
         function SenhaNosParametros() {
             $senha = $this->senha;
-            if (isset($senha) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W\_]).{8,}$/", $senha))
-                return true;
-            else 
-                return false;
+            return isset($senha) && preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W\_]).{8,}$/", $senha);
         }
         
         // Métodos Get

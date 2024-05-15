@@ -16,7 +16,7 @@
 <body class="h-100">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-    <script src="../script.js"></script>
+    <script src="script.js"></script>
     <script>
         $(document).ready(function(){
             $('#senha').on("keyup", function(){
