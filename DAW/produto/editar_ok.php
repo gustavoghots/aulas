@@ -13,13 +13,13 @@
     $qtd_estoque = $_POST["qtd_estoque"];
     $idCategoria = $_POST['categoria'];
 
+    $objProdutoDAO = new Produto_DAO();
     if($_FILES['imagem']['name']!=null){
         $nomeImagem = $_FILES['imagem']['name'];
         $tmpImagem = $_FILES['imagem']['tmp_name'];
         $direcao = "../img/".$nomeImagem;
         if(!move_uploaded_file($tmpImagem,$direcao)) header("Location:editar.php?error");
     }else{
-        $objProdutoDAO = new Produto_DAO();
         $nomeImagem = $objProdutoDAO->retornarProduto($idProduto)['imagem'];        
     }
 
@@ -33,7 +33,6 @@
     $objProduto->setImagem($nomeImagem);
     $objProduto->setCategoriaIdCategoria($idCategoria);
 
-    $objProdutoDAO = new Produto_DAO();
     $retorno = $objProdutoDAO->editar($objProduto);
     if($retorno) header("Location:listar.php?atualizarOk");
     else header("Location:listar.php?atualizarNOk");

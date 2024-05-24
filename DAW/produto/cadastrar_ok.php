@@ -16,7 +16,8 @@
     $nomeImagem = $_FILES['imagem']['name'];
     $tmpImagem = $_FILES['imagem']['tmp_name'];
     $direcao = "../img/".$nomeImagem;
-    if(!move_uploaded_file($tmpImagem,$direcao)) header("Location:cadastar.php?error");
+    if(!move_uploaded_file($tmpImagem,$direcao)) 
+        header("Location:cadastar.php?error");
 
     $objProduto = new Produto();
     $objProduto->setNome($nome);
@@ -31,5 +32,5 @@
     $objCategoriaDAO = new Produto_DAO();
     $retorno = $objCategoriaDAO->inserir($objProduto);
     $oferta = $objCategoriaDAO->ofertar($objProduto);
-    if($retorno && $oferta) header("Location:../usuario/adm/index.php?catOk");
+    if($retorno && $oferta) header("Location:../usuario/adm/index.php?prodOk");
 ?>
