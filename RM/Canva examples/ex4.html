@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas House</title>
+</head>
+<body>
+    <canvas id="houseCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('houseCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawShape(type, color, dimensions, coordinates) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+
+            switch (type) {
+                case 'square':
+                    ctx.fillRect(coordinates.x, coordinates.y, dimensions.size, dimensions.size);
+                    break;
+                case 'rectangle':
+                    ctx.fillRect(coordinates.x, coordinates.y, dimensions.width, dimensions.height);
+                    break;
+                case 'triangle':
+                    ctx.moveTo(coordinates.x, coordinates.y);
+                    ctx.lineTo(coordinates.x + dimensions.width / 2, coordinates.y - dimensions.height);
+                    ctx.lineTo(coordinates.x + dimensions.width, coordinates.y);
+                    ctx.closePath();
+                    break;
+                case 'rightTriangle':
+                    ctx.moveTo(coordinates.x, coordinates.y);
+                    ctx.lineTo(coordinates.x + dimensions.width, coordinates.y);
+                    ctx.lineTo(coordinates.x, coordinates.y - dimensions.height);
+                    ctx.closePath();
+                    break;
+                case 'pentagon':
+                    const angle = Math.PI / 2 * 3;
+                    const step = Math.PI / 5;
+                    const shift = (Math.PI / 180.0) * -18;
+                    ctx.moveTo(coordinates.x + (dimensions.radius * Math.cos(shift)), coordinates.y - (dimensions.radius * Math.sin(shift)));
+                    for (let i = 0; i < 5; i++) {
+                        ctx.lineTo(coordinates.x + (dimensions.radius * Math.cos(angle + shift)), coordinates.y - (dimensions.radius * Math.sin(angle + shift)));
+                        angle += step;
+                    }
+                    ctx.closePath();
+                    break;
+                case 'circle':
+                    ctx.arc(coordinates.x, coordinates.y, dimensions.radius, 0, Math.PI * 2);
+                    break;
+                default:
+                    console.log('Shape not recognized');
+            }
+
+            ctx.fill();
+        }
+
+        // Draw house
+        // Base of the house
+        drawShape('rectangle', 'lightgrey', { width: 200, height: 150 }, { x: 300, y: 300 });
+        // Roof of the house
+        drawShape('triangle', 'darkred', { width: 200, height: 100 }, { x: 300, y: 300 });
+        // Door
+        drawShape('rectangle', 'brown', { width: 50, height: 80 }, { x: 375, y: 370 });
+        // Left window
+        drawShape('square', 'skyblue', { size: 40 }, { x: 320, y: 320 });
+        // Right window
+        drawShape('square', 'skyblue', { size: 40 }, { x: 440, y: 320 });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo da Caneca com Fumaça</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="logoCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawMug() {
+            ctx.shadowColor = 'rgba(128, 0, 128, 0.7)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetX = 15;
+            ctx.shadowOffsetY = 15;
+
+            ctx.fillStyle = '#D3D3D3';
+            ctx.fillRect(150, 200, 100, 150);
+
+            ctx.beginPath();
+            ctx.arc(200, 350, 50, 0, Math.PI, true);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(250, 275, 50, -Math.PI / 2, Math.PI / 2, false);
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = '#D3D3D3';
+            ctx.stroke();
+
+            ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+        }
+
+        function drawSteam() {
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#808080';
+
+            ctx.beginPath();
+            ctx.moveTo(180, 150);
+            ctx.bezierCurveTo(170, 100, 220, 100, 210, 50);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(220, 150);
+            ctx.bezierCurveTo(210, 100, 260, 100, 250, 50);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(200, 130);
+            ctx.bezierCurveTo(190, 80, 240, 80, 230, 30);
+            ctx.stroke();
+        }
+
+        drawMug();
+        drawSteam();
+    </script>
+</body>
+</html>
