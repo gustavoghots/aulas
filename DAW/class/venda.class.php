@@ -1,7 +1,9 @@
 <?php
     class Venda {
         private $idVenda;
+        private $entrega;
         private $data;
+        private $pagamento;
         private $valor_total;
         private $status;
         private $Usuario_idUsuario;
@@ -11,8 +13,16 @@
             return $this->idVenda;
         }
 
+        public function getEntrega() {
+            return $this->entrega;
+        }
+
         public function getData() {
             return $this->data;
+        }
+
+        public function getPagamento() {
+            return $this->pagamento;
         }
 
         public function getValorTotal() {
@@ -32,8 +42,16 @@
             $this->idVenda = $idVenda;
         }
 
+        public function setEntrega($entrega) {
+            $this->entrega = $entrega;
+        }
+
         public function setData($data) {
             $this->data = $data;
+        }
+
+        public function setPagamento($pagamento) {
+            $this->pagamento = $pagamento;
         }
 
         public function setValorTotal($valor_total) {

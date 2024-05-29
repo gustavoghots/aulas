@@ -30,7 +30,9 @@
             return $sql->execute();
         }
         public function retornarProduto($idProduto){
-            $sql= $this->conexao->prepare("select * from produto where idProduto = :idProduto");
+            $sql= $this->conexao->prepare("select p.*, c.descricao as categoria 
+            from Produto p inner join categoria c on p.Categoria_idCategoria = c.idCategoria
+            where p.idProduto = :idProduto");
             $sql->bindValue(":idProduto",$idProduto);
             $sql->execute();
             return $sql->fetch();

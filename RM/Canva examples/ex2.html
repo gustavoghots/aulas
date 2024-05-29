@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Shadow Example</title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl-canvas" width="800" height="600"></canvas>
+    <script type="module">
+        import * as twgl from "https://cdn.skypack.dev/twgl.js";
+
+        const gl = document.getElementById('webgl-canvas').getContext('webgl');
+
+        const vs = `
+            attribute vec4 position;
+            uniform mat4 u_matrix;
+            void main() {
+                gl_Position = u_matrix * position;
+            }
+        `;
+
+        const fs = `
+            precision mediump float;
+            void main() {
+                gl_FragColor = vec4(1, 0, 0, 1);  // Red color
+            }
+        `;
+
+        const programInfo = twgl.createProgramInfo(gl, [vs, fs]);
+
+        const arrays = {
+            position: { numComponents: 3, data: [
+                -0.5, -0.5,  0.0,
+                 0.5, -0.5,  0.0,
+                -0.5,  0.5,  0.0,
+                 0.5,  0.5,  0.0,
+            ] },
+        };
+
+        const bufferInfo = twgl.createBufferInfoFromArrays(gl, arrays);
+
+        function render(time) {
+            time *= 0.001;
+            twgl.resizeCanvasToDisplaySize(gl.canvas);
+            gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+            const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+            const projectionMatrix = m4.perspective(degToRad(60), aspect, 1, 2000);
+            const cameraMatrix = m4.lookAt([1, 4, -10], [0, 0, 0], [0, 1, 0]);
+            const viewMatrix = m4.inverse(cameraMatrix);
+            const viewProjectionMatrix = m4.multiply(projectionMatrix, viewMatrix);
+            const matrix = m4.translate(viewProjectionMatrix, 0, 0, 0);
+
+            gl.useProgram(programInfo.program);
+            twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
+            twgl.setUniforms(programInfo, { u_matrix: matrix });
+            twgl.drawBufferInfo(gl, bufferInfo);
+
+            requestAnimationFrame(render);
+        }
+
+        requestAnimationFrame(render);
+
+        function degToRad(d) {
+            return d * Math.PI / 180;
+        }
+    </script>
+</body>
+</html>

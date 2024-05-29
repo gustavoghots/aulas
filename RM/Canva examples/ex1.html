@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Shadow Control</title>
+    <style>
+        #controls {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <label for="shadowColor">Shadow Color:</label>
+        <input type="color" id="shadowColor" value="#000000">
+        <label for="shadowBlur">Shadow Blur:</label>
+        <input type="range" id="shadowBlur" min="0" max="50" value="10">
+        <label for="shadowOffsetX">Shadow Offset X:</label>
+        <input type="number" id="shadowOffsetX" value="5">
+        <label for="shadowOffsetY">Shadow Offset Y:</label>
+        <input type="number" id="shadowOffsetY" value="5">
+    </div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const shadowColorInput = document.getElementById('shadowColor');
+        const shadowBlurInput = document.getElementById('shadowBlur');
+        const shadowOffsetXInput = document.getElementById('shadowOffsetX');
+        const shadowOffsetYInput = document.getElementById('shadowOffsetY');
+
+        function drawSquare() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'blue';
+            ctx.shadowColor = shadowColorInput.value;
+            ctx.shadowBlur = shadowBlurInput.value;
+            ctx.shadowOffsetX = shadowOffsetXInput.value;
+            ctx.shadowOffsetY = shadowOffsetYInput.value;
+            ctx.fillRect(100, 100, 100, 100);
+        }
+
+        shadowColorInput.addEventListener('input', drawSquare);
+        shadowBlurInput.addEventListener('input', drawSquare);
+        shadowOffsetXInput.addEventListener('input', drawSquare);
+        shadowOffsetYInput.addEventListener('input', drawSquare);
+
+        drawSquare();
+    </script>
+</body>
+</html>

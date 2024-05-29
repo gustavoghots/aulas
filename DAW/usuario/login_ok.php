@@ -20,13 +20,13 @@
     }else{
         if($retorno['adm']==true){
             $_SESSION['idAdm']=$retorno['idUsuario'];
-            echo 'adm';
+            $_SESSION['logadoADM']=true;
             header("Location:adm/index.php");
             exit();
         }else{
             $_SESSION['idUsuario']=$retorno['idUsuario'];
-            echo 'normal';
-            header("Location:usuario/index.php");
+            $_SESSION['logado']=true;
+            header("Location:../site/index.php");
             exit();
         }
         $_SESSION["logado"]=true;

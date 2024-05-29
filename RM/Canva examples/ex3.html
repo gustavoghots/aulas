@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Shapes</title>
+</head>
+<body>
+    <canvas id="shapesCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('shapesCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawShape(type, color, dimensions, coordinates) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+
+            switch (type) {
+                case 'square':
+                    ctx.fillRect(coordinates.x, coordinates.y, dimensions.size, dimensions.size);
+                    break;
+                case 'rectangle':
+                    ctx.fillRect(coordinates.x, coordinates.y, dimensions.width, dimensions.height);
+                    break;
+                case 'triangle':
+                    ctx.moveTo(coordinates.x, coordinates.y);
+                    ctx.lineTo(coordinates.x + dimensions.width / 2, coordinates.y - dimensions.height);
+                    ctx.lineTo(coordinates.x + dimensions.width, coordinates.y);
+                    ctx.closePath();
+                    break;
+                case 'rightTriangle':
+                    ctx.moveTo(coordinates.x, coordinates.y);
+                    ctx.lineTo(coordinates.x + dimensions.width, coordinates.y);
+                    ctx.lineTo(coordinates.x, coordinates.y - dimensions.height);
+                    ctx.closePath();
+                    break;
+                case 'pentagon':
+                    const angle = Math.PI / 2 * 3;
+                    const step = Math.PI / 5;
+                    const shift = (Math.PI / 180.0) * -18;
+                    ctx.moveTo(coordinates.x + (dimensions.radius * Math.cos(shift)), coordinates.y - (dimensions.radius * Math.sin(shift)));
+                    for (let i = 0; i < 5; i++) {
+                        ctx.lineTo(coordinates.x + (dimensions.radius * Math.cos(angle + shift)), coordinates.y - (dimensions.radius * Math.sin(angle + shift)));
+                        angle += step;
+                    }
+                    ctx.closePath();
+                    break;
+                case 'circle':
+                    ctx.arc(coordinates.x, coordinates.y, dimensions.radius, 0, Math.PI * 2);
+                    break;
+                default:
+                    console.log('Shape not recognized');
+            }
+
+            ctx.fill();
+        }
+
+        // Example usage
+        drawShape('square', 'red', { size: 100 }, { x: 50, y: 50 });
+        drawShape('rectangle', 'blue', { width: 150, height: 100 }, { x: 200, y: 50 });
+        drawShape('triangle', 'green', { width: 100, height: 100 }, { x: 400, y: 150 });
+        drawShape('rightTriangle', 'purple', { width: 100, height: 100 }, { x: 550, y: 150 });
+        drawShape('pentagon', 'orange', { radius: 50 }, { x: 700, y: 100 });
+        drawShape('circle', 'pink', { radius: 50 }, { x: 100, y: 300 });
+    </script>
+</body>
+</html>
