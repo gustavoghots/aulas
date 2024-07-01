@@ -54,7 +54,8 @@ foreach ($_SESSION['carrinho'] as $idProduto => $quantidade) {
         </td>
         <td><img width="100" src="../img/<?= $retorno["imagem"] ?>" /></td>
         <td>
-            <input type="number" name="quantidade_<?=$idProduto?>" value="<?= $quantidade; ?>"><br>
+            <input type="number" name="quantidade_<?=$idProduto?>" value="<?= $quantidade; ?>"
+            min="1" max="<?=$retorno['qtd_estoque']?>"><br>
         </td>
         <td>
             <a href="vermais.php?id=<?= $retorno['idProduto']; ?>">

@@ -4,17 +4,17 @@ session_start();
 include_once "../class/produto.class.php";
 include_once "../class/DAO/produtoDAO.class.php";
 
-if(isset($_GET['carrinho'])){
-    $_SESSION['carrinho'][$_GET['id']] = 1;
-    echo "Inserido ao carrinho com sucesso";
+if (isset($_GET['carrinho'])) {
+	$_SESSION['carrinho'][$_GET['id']] = 1;
+	echo "Inserido ao carrinho com sucesso";
 
-    echo "<pre>";
-    print_r($_SESSION['carrinho']);
-    echo "</pre>";
+	echo "<pre>";
+	print_r($_SESSION['carrinho']);
+	echo "</pre>";
 }
-if(isset($_GET['C_null']))
+if (isset($_GET['C_null']))
 	echo "carrinho vazio";
-		
+
 $objProdutoDAO = new Produto_DAO();
 $retorno = $objProdutoDAO->listar();
 ?>
@@ -30,34 +30,36 @@ $retorno = $objProdutoDAO->listar();
 	<tbody>
 		<?php
 		foreach ($retorno as $linha) {
-			$objProduto = new Produto();
-			$objProduto->setPreco($linha['preco']);
-			$objProduto->setOferta($linha['oferta']);
+			if ($linha['qtd_estoque'] > 0) {
+				$objProduto = new Produto();
+				$objProduto->setPreco($linha['preco']);
+				$objProduto->setOferta($linha['oferta']);
 		?>
-			<tr>
-				<td><?= $linha["nome"] ?></td>
-				<td><?= $linha["categoria"] ?></td>
-				<td>
-					<?php
-					if ($objProduto->getPrecoOferta() != $linha['preco']) {
-						echo "<del>" . $linha['preco'] . "</del><br>" . number_format($objProduto->getPrecoOferta(), 2, '.', '');
-					} else {
-						echo $linha['preco'];
-					}
-					?>
-				</td>
-				<td><img width="100" src="../img/<?= $linha["imagem"] ?>" /></td>
-				<td>
-					<a href="vermais.php?id=<?= $linha['idProduto']; ?>">
-						Ver mais
-					</a>
-				</td>
-				<td>
-					<a href="?id=<?= $linha['idProduto']; ?>&carrinho">
-						Adicionar
-					</a>
-				</td>
-			</tr>
+				<tr>
+					<td><?= $linha["nome"] ?></td>
+					<td><?= $linha["categoria"] ?></td>
+					<td>
+						<?php
+						if ($objProduto->getPrecoOferta() != $linha['preco']) {
+							echo "<del>" . $linha['preco'] . "</del><br>" . number_format($objProduto->getPrecoOferta(), 2, '.', '');
+						} else {
+							echo $linha['preco'];
+						}
+						?>
+					</td>
+					<td><img width="100" src="../img/<?= $linha["imagem"] ?>" /></td>
+					<td>
+						<a href="vermais.php?id=<?= $linha['idProduto']; ?>">
+							Ver mais
+						</a>
+					</td>
+					<td>
+						<a href="?id=<?= $linha['idProduto']; ?>&carrinho">
+							Adicionar
+						</a>
+					</td>
+				</tr>
 		<?php
+			}
 		}
 		?>

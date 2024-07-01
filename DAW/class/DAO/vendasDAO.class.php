@@ -24,18 +24,34 @@ class Venda_DAO
     {
         try {
             $this->conexao->beginTransaction();
-            
+
             $values = [];
             $params = [];
             $valorTotal = 0;
 
             foreach ($produtos as $prod) {
+                // Verificar estoque disponível
+                $sql = $this->conexao->prepare("SELECT qtd_estoque FROM produto WHERE idProduto = :idProduto");
+                $sql->bindValue(":idProduto", $prod->getProdutoIdProduto());
+                $sql->execute();
+                $estoque = $sql->fetchColumn();
+
+                if ($estoque < $prod->getQuantidade()) {
+                    throw new Exception("Estoque insuficiente para o produto ID: " . $prod->getProdutoIdProduto());
+                }
+
                 $values[] = "(?, ?, ?, ?)";
                 $params[] = $prod->getVendaIdVenda();
                 $params[] = $prod->getProdutoIdProduto();
                 $params[] = $prod->getQuantidade();
                 $params[] = $prod->getValorUnit();
                 $valorTotal += $prod->getValorUnit() * $prod->getQuantidade();
+
+                // Atualizar quantidade de estoque
+                $sql = $this->conexao->prepare("UPDATE produto SET qtd_estoque = qtd_estoque - :quantidade WHERE idProduto = :idProduto");
+                $sql->bindValue(":quantidade", $prod->getQuantidade());
+                $sql->bindValue(":idProduto", $prod->getProdutoIdProduto());
+                $sql->execute();
             }
 
             $valuesString = implode(", ", $values);
@@ -60,4 +76,3 @@ class Venda_DAO
         }
     }
 }
-?>

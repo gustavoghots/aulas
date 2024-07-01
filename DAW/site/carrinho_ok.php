@@ -15,15 +15,9 @@ $objVenda->setUsuarioIdUsuario($_SESSION['idUsuario']);
 
 $objVendaDAO = new Venda_DAO();
 $retorno = $objVendaDAO->inserir($objVenda);
-if ($retorno > 0)
-    echo 'venda inserida';
-else
-    echo 'venda não inserida';
 
 $objProdutoDAO = new Produto_DAO();
 $objProduto = new Produto();
-
-$objVendProd = [];
 
 foreach ($_SESSION['carrinho'] as $idProd => $quantidade) {
     $objVendProd[$idProd] = new Venda_has_produto;
