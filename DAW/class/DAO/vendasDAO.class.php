@@ -1,5 +1,6 @@
 <?php
 @include_once '../venda.class.php';
+
 class Venda_DAO
 {
     private $conexao;
@@ -9,22 +10,21 @@ class Venda_DAO
         $this->conexao = new PDO("mysql:host=localhost;dbname=padel", "root", "");
     }
 
-    public function inserir(Venda $venda)
-    {
-        $sql = $this->conexao->prepare("INSERT INTO venda (entrega, data, pagamento, status, Usuario_idUsuario) 
-        VALUES (:entrega, NOW(), :pagamento, 'Pendente', :Usuario_idUsuario)");
-        $sql->bindValue(":entrega", $venda->getEntrega());
-        $sql->bindValue(":pagamento", $venda->getPagamento());
-        $sql->bindValue(":Usuario_idUsuario", $venda->getUsuarioIdUsuario());
-        $sql->execute();
-        return $this->conexao->lastInsertId();
-    }
-
-    public function inserirItems($produtos)
+    public function inserirVendaComItens(Venda $venda, $produtos)
     {
         try {
             $this->conexao->beginTransaction();
 
+            // Inserir a venda
+            $sql = $this->conexao->prepare("INSERT INTO venda (entrega, data, pagamento, status, Usuario_idUsuario) 
+                                            VALUES (:entrega, NOW(), :pagamento, 'Pendente', :Usuario_idUsuario)");
+            $sql->bindValue(":entrega", $venda->getEntrega());
+            $sql->bindValue(":pagamento", $venda->getPagamento());
+            $sql->bindValue(":Usuario_idUsuario", $venda->getUsuarioIdUsuario());
+            $sql->execute();
+            $vendaId = $this->conexao->lastInsertId();
+
+            // Inserir itens da venda
             $values = [];
             $params = [];
             $valorTotal = 0;
@@ -41,7 +41,7 @@ class Venda_DAO
                 }
 
                 $values[] = "(?, ?, ?, ?)";
-                $params[] = $prod->getVendaIdVenda();
+                $params[] = $vendaId;
                 $params[] = $prod->getProdutoIdProduto();
                 $params[] = $prod->getQuantidade();
                 $params[] = $prod->getValorUnit();
@@ -63,16 +63,30 @@ class Venda_DAO
 
             $sql->execute();
 
-            $firstProduct = reset($produtos);
             $sql = $this->conexao->prepare("UPDATE venda SET valor_Total = :valor_Total WHERE idVenda = :idVenda");
-            $sql->bindValue(":idVenda", $firstProduct->getVendaIdVenda());
+            $sql->bindValue(":idVenda", $vendaId);
             $sql->bindValue(":valor_Total", $valorTotal);
             $sql->execute();
 
-            $this->conexao->commit();
+            return $this->conexao->commit();
         } catch (Exception $e) {
             $this->conexao->rollBack();
-            throw $e;
+            return false;
         }
     }
+    public function getDetalhes($idVenda){
+        $sql = $this->conexao->prepare("
+        select v.data as data, u.usuario as usuario, v.status as status, p.imagem as imagem, p.nome as nome, vhp.Valor_Unit as valor, vhp.Quantidade as quantidade, v.valor_Total as valorTotal
+        from usuario u inner join venda v
+            on u.idUsuario = v.Usuario_idUsuario
+            inner join venda_has_produto vhp
+                on v.idVenda = vhp.Venda_idVenda
+                inner join produto p
+                    on vhp.Produto_idProduto = p.idProduto
+        where v.idVenda = :idVenda");
+        $sql->bindValue("idVenda",$idVenda);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
 }
+?>

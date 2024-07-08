@@ -11,6 +11,9 @@ if (isset($_GET['remover']))
 if (empty($_SESSION['carrinho']))
     header("Location:index.php?C_null");
 
+if (isset($_GET["C_error"]))
+    echo "ocorreu um erro inesperado ao incluir sua compra em nosso sistema";
+
 
 include_once "../class/produto.class.php";
 include_once "../class/DAO/produtoDAO.class.php";
