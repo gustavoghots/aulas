@@ -88,5 +88,11 @@ class Venda_DAO
         $sql->execute();
         return $sql->fetchAll();
     }
+
+    public function listar($complemento = ""){
+        $sql = $this->conexao->prepare("SELECT * FROM venda ".$complemento);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
 }
 ?>

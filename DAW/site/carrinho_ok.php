@@ -29,6 +29,6 @@ foreach ($_SESSION['carrinho'] as $idProd => $quantidade) {
 }
     $objVendaDAO = new Venda_DAO();
 if($objVendaDAO->inserirVendaComItens($objVenda,$objVendProd))
-    header("Location:compra.php?id=$retorno");
+    header("Location:../venda/compra.php?id=$retorno");
 else
     header("Location:index.php?C_error");
