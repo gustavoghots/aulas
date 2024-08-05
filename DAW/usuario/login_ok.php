@@ -29,6 +29,5 @@
             header("Location:../site/index.php");
             exit();
         }
-        $_SESSION["logado"]=true;
     }
 ?>

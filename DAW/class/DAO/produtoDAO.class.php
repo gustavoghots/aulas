@@ -18,12 +18,15 @@
             $sql->bindValue(":Categoria_idCategoria",$produto->getCategoriaIdCategoria());
             return $sql->execute();
         }
-        public function listar(){
-            $sql= $this->conexao->prepare("select p.*, c.descricao as categoria
-            from Produto p inner join categoria c on p.Categoria_idCategoria = c.idCategoria");
+        public function listar($complemento = '1=1') {
+            $sql = $this->conexao->prepare("SELECT p.*, c.descricao AS categoria
+                                            FROM Produto p
+                                            INNER JOIN categoria c ON p.Categoria_idCategoria = c.idCategoria
+                                            WHERE $complemento");
             $sql->execute();
             return $sql->fetchAll();
         }
+        
         public function excluir($id){
             $sql= $this->conexao->prepare("delete from produto where idProduto=:id");
             $sql->bindValue(":id",$id);

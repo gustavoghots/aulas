@@ -1,0 +1,11 @@
+Listar produtos na página inicial para o usuário - 1 ponto
+Adicionar produtos ao carrinho e finalizar compra - 2 pontos
+Sistema demonstra nota fiscal/resumo da compra ao final da compra para o usuário - 1 ponto
+Administrador visualiza compras novas e atualiza o status - 1 ponto
+Administrador visualiza compras novas e compras antigas de forma separada - 1 ponto
+Usuário visualiza suas compras ainda não finalizadas -  1 ponto
+Usuário visualiza suas compras já finalizadas - 1 ponto
+
+todo:
+Listar produtos por categoria para o usuário - 1 ponto
+Buscar produto pelo nome/descrição para o usuário - 1 ponto

@@ -84,7 +84,7 @@ class Venda_DAO
                 inner join produto p
                     on vhp.Produto_idProduto = p.idProduto
         where v.idVenda = :idVenda");
-        $sql->bindValue("idVenda",$idVenda);
+        $sql->bindValue(":idVenda",$idVenda);
         $sql->execute();
         return $sql->fetchAll();
     }
@@ -94,5 +94,18 @@ class Venda_DAO
         $sql->execute();
         return $sql->fetchAll();
     }
+
+    public function retornarUnico($idVenda){
+        $sql = $this->conexao->prepare("SELECT * FROM venda where idVenda = :idVenda");
+        $sql->bindValue(':idVenda',$idVenda);
+        $sql->execute();
+        return $sql->fetch();
+    }
+
+    public function editarStatus(Venda $venda){
+        $sql = $this->conexao->prepare("update venda set status = :status where idVenda = :idVenda");
+        $sql->bindValue(":idVenda",$venda->getIdVenda());
+        $sql->bindValue(":status",$venda->getStatus());
+        $sql->execute();
+    }
 }
-?>

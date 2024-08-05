@@ -8,11 +8,11 @@ if (!isset($_SESSION['logadoADM'])) {
     header("Location: ../login.php");
     exit();
 }
-
+$idUsuario = $_SESSION['idUsuario'];
 $objVendaDAO = new Venda_DAO();
-$retorno = $objVendaDAO->listar("ORDER BY status DESC;");
+$retorno = $objVendaDAO->listar("where Usuario_idUsuario = $idUsuario  ORDER BY status DESC;");
 ?>
-<p><a href="../usuario/adm/index.php">Voltar</a></p>
+<p><a href="../site/index.php">Voltar</a></p>
 
 <?php
 if ($retorno) {
@@ -35,7 +35,7 @@ if ($retorno) {
                             <th>Entrega</th>
                             <th>Valor Total</th>
                             <th>Pagamento</th>
-                            <th colspan="2">Ações</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -48,7 +48,6 @@ if ($retorno) {
                 <td>' . htmlspecialchars($linha["valor_Total"]) . '</td>
                 <td>' . htmlspecialchars($linha["pagamento"]) . '</td>
                 <td><a href="compra.php?id=' . htmlspecialchars($linha['idVenda']) . '">Ver mais</a></td>
-                <td><a href="editar.php?id=' . htmlspecialchars($linha['idVenda']) . '">Editar</a></td>
               </tr>';
     }
     // Fecha a última tabela
