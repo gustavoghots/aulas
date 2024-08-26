@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhando Formas</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="300"></canvas>
+    <br>
+    Forma:
+    <select id="shapeSelector">
+        <option value="rectangle">Retângulo</option>
+        <option value="circle">Círculo</option>
+        <option value="line">Linha</option>
+        <option value="triangle">Triângulo</option>
+    </select>
+    <br>
+    X: <input type="number" id="xPos" value="50">
+    Y: <input type="number" id="yPos" value="50">
+    <br>
+    Largura: <input type="number" id="width" value="100">
+    Altura: <input type="number" id="height" value="100">
+    <br>
+    <button id="drawButton">Desenhar</button>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        document.getElementById('drawButton').addEventListener('click', function () {
+            const shape = document.getElementById('shapeSelector').value;
+            const x = parseInt(document.getElementById('xPos').value);
+            const y = parseInt(document.getElementById('yPos').value);
+            const width = parseInt(document.getElementById('width').value);
+            const height = parseInt(document.getElementById('height').value);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            switch (shape) {
+                case 'rectangle':
+                    ctx.fillRect(x, y, width, height);
+                    break;
+                case 'circle':
+                    ctx.beginPath();
+                    ctx.arc(x, y, width / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.closePath();
+                    break;
+                case 'line':
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + width, y + height);
+                    ctx.stroke();
+                    ctx.closePath();
+                    break;
+                case 'triangle':
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + width / 2, y - height);
+                    ctx.lineTo(x + width, y);
+                    ctx.lineTo(x, y);
+                    ctx.fill();
+                    ctx.closePath();
+                    break;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exerc2</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+
+        function resizeCanvas() {
+            let canvas = $('#myCanvas')[0];
+            canvas.width = $(window).width();
+            canvas.height = $(window).height();
+        }
+        resizeCanvas();
+        $(window).resize(function () {
+            resizeCanvas();
+        });
+
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dx = 2;
+        let dy = 2;
+        const radius = 20;
+
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#0095DD';
+            ctx.fill();
+            ctx.closePath();
+
+            if (x + dx > canvas.width - radius || x + dx < radius) {
+                dx = -dx;
+            }
+            if (y + dy > canvas.height - radius || y + dy < radius) {
+                dy = -dy;
+            }
+
+            x += dx;
+            y += dy;
+
+            requestAnimationFrame(animar);
+        }
+
+        animar();
+    </script>
+
+</body>
+
+</html>

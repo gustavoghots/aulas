@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +11,24 @@
     <script src="script.js" defer></script>
     <title>Gustavo Vargas</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+
+<body class="d-flex flex-column min-vh-100 z-n1">
 
     <!-- Navbar -->
     <nav id="mainNavbar" class="navbar navbar-expand-md fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-3" href="#">
+            <a class="navbar-brand me-3" href="#inicio">
                 <img src="img/G.svg" height="80" alt="Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Projetos">Projetos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Portfólio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
                 </ul>
             </div>
@@ -33,18 +36,59 @@
     </nav>
 
     <!-- Conteúdo Principal -->
-    <main class="d-flex flex-grow-1 stars-small">
+    <main class="d-flex flex-wrap stars-small z-n1">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
-        
-        <div id="perfil" class="flex-grow-1 container-fluid">
-            <div class="row align-items-center justify-content-center">
-                <div class="col w-auto">
-                    <img src="img/G.svg" class="img-thumbnail" alt="Foto Perfil">
+
+        <section id="inicio" class="d-flex w-100 vh-100">
+            <div class="d-flex z-0 align-items-center justify-content-center">
+                <div id="img-perfil-warp" class="row w-75 align-items-center">
+                    <div class="col d-flex justify-content-center">
+                        <img src="img/perfil.png" class="rounded-circle border-0 shadow-lg perfil-img"
+                            alt="Foto Perfil">
+                    </div>
+                    <div class="col">
+                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <section id="Projetos" class="d-flex w-100 vh-100">
+            <div class="d-flex align-items-center justify-content-center container-fluid">
+                <div class="row w-75 h-75">
+                    <div class="col h-100">
+                        <div id="carousel" class="carousel slide h-100 bg-body-tertiary rounded">
+                            <div class="carousel-inner h-100">
+                                <div class="carousel-item h-100 active">
+                                    <div class="d-flex align-items-center justify-content-center h-100">
+                                        <img src="img/particulas.png" class="d-block img-fluid h-100" style="object-fit: contain;" alt="Perfil">
+                                    </div>
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <div class="d-flex align-items-center justify-content-center h-100">
+                                        <img src="img/NEFFEX_Site.png" class="d-block img-fluid h-100" style="object-fit: contain;" alt="Logo">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>                       
+                    </div>
+                </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -58,13 +102,18 @@
             </div>
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                 <li class="ms-3"><span class="mb-3 mb-md-0 text-body-secondary">Contatos:</span></li>
-                <li class="ms-3"><a class="text-body-secondary" href="mailto:gustavo.fiss.v@gmail.com"><i class="bi bi-envelope"></i></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://github.com/gustavoghots" target="_blank"><i class="bi bi-github"></i></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/gustavo-fiss-96136028a/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/gustavofiss/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="mailto:gustavo.fiss.v@gmail.com"><i
+                            class="bi bi-envelope"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://github.com/gustavoghots"
+                        target="_blank"><i class="bi bi-github"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary"
+                        href="https://www.linkedin.com/in/gustavo-fiss-96136028a/" target="_blank"><i
+                            class="bi bi-linkedin"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/gustavofiss/"
+                        target="_blank"><i class="bi bi-instagram"></i></a></li>
             </ul>
         </div>
     </footer>
-
 </body>
+
 </html>

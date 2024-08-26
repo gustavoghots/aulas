@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Partículas com Colisão</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script>
+        $(document).ready(function () {
+            function resizeCanvas() {
+                let canvas = $('#myCanvas')[0];
+                canvas.width = $(window).width();
+                canvas.height = $(window).height();
+            }
+            resizeCanvas();
+            $(window).resize(function () {
+                resizeCanvas();
+            });
+
+            const canvas = document.getElementById('myCanvas');
+            const ctx = canvas.getContext('2d');
+            const numParticulas = 100;
+            const particulas = [];
+
+            class Particula {
+                constructor(x, y, radius) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = radius;
+                    this.vx = (Math.random() - 0.5) * 4;
+                    this.vy = (Math.random() - 0.5) * 4;
+                }
+
+                desenhar() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(0, 150, 255, 0.7)';
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                atualizar() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Detecta colisão com as bordas
+                    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                        this.vx = -this.vx;
+                    }
+                    if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                        this.vy = -this.vy;
+                    }
+
+                    // Detecta colisão com outras partículas
+                    for (let i = 0; i < particulas.length; i++) {
+                        const outraParticula = particulas[i];
+                        if (this !== outraParticula) {
+                            const dx = this.x - outraParticula.x;
+                            const dy = this.y - outraParticula.y;
+                            const distancia = Math.sqrt(dx * dx + dy * dy);
+                            const somaRaios = this.radius + outraParticula.radius;
+
+                            if (distancia < somaRaios) {
+                                // Evita sobreposição corrigindo a posição
+                                const overlap = (somaRaios - distancia) / 2;
+                                const angulo = Math.atan2(dy, dx);
+
+                                this.x += Math.cos(angulo) * overlap;
+                                this.y += Math.sin(angulo) * overlap;
+                                outraParticula.x -= Math.cos(angulo) * overlap;
+                                outraParticula.y -= Math.sin(angulo) * overlap;
+
+                                // Troca as velocidades após a colisão
+                                [this.vx, outraParticula.vx] = [outraParticula.vx, this.vx];
+                                [this.vy, outraParticula.vy] = [outraParticula.vy, this.vy];
+                            }
+                        }
+                    }
+                }
+            }
+
+            function criarParticula() {
+                const radius = Math.random() * 15 + 7;
+                const x = Math.random() * (canvas.width - radius * 2) + radius;
+                const y = Math.random() * (canvas.height - radius * 2) + radius;
+                return new Particula(x, y, radius);
+            }
+
+            for (let i = 0; i < numParticulas; i++) {
+                particulas.push(criarParticula());
+            }
+
+            function animar() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particulas.forEach(particula => {
+                    particula.atualizar();
+                    particula.desenhar();
+                });
+
+                requestAnimationFrame(animar);
+            }
+
+            function removerParticula(particula) {
+                const index = particulas.indexOf(particula);
+                if (index !== -1) {
+                    particulas.splice(index, 1);
+                    particulas.push(criarParticula());
+                }
+            }
+
+            canvas.addEventListener('click', function (event) {
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                particulas.forEach(particula => {
+                    const dx = x - particula.x;
+                    const dy = y - particula.y;
+                    if (Math.sqrt(dx * dx + dy * dy) < particula.radius) {
+                        removerParticula(particula);
+                    }
+                });
+            });
+
+            animar();
+        });
+    </script>
+</body>
+
+</html>
