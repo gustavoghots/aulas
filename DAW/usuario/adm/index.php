@@ -43,5 +43,8 @@
 <a href="../../produto/cadastrar.php">Cadastrar Produto</a><br/><br/>
 <a href="../../produto/listar.php">Listar Produto</a><br/><br/>
 
+<h2>Vendas</h2>
+<a href="../../venda/listar_ADM.php">Listar Vendas</a><br/><br/>
+
 </body>
 </html>
