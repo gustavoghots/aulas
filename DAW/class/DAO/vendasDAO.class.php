@@ -67,8 +67,8 @@ class Venda_DAO
             $sql->bindValue(":idVenda", $vendaId);
             $sql->bindValue(":valor_Total", $valorTotal);
             $sql->execute();
-
-            return $this->conexao->commit();
+            $this->conexao->commit();
+            return $vendaId;
         } catch (Exception $e) {
             $this->conexao->rollBack();
             return false;

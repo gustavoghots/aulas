@@ -8,6 +8,7 @@ include_once '../class/DAO/vendasDAO.class.php';
 $objVendaDAO = new Venda_DAO();
 $retorno = $objVendaDAO->getDetalhes($_GET['id']);
 ?>
+<a href="../site/index.php">Página inicial</a><br><br>
 <table border>
     <tbody>
         <tr>

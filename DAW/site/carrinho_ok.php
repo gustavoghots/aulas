@@ -24,11 +24,11 @@ foreach ($_SESSION['carrinho'] as $idProd => $quantidade) {
 
     $objVendProd[$idProd]->setProdutoIdProduto($idProd);
     $objVendProd[$idProd]->setQuantidade($_POST["quantidade_$idProd"]);
-    $objVendProd[$idProd]->setVendaIdVenda($retorno);
     $objVendProd[$idProd]->setValorUnit($objProduto->getPrecoOferta());
 }
     $objVendaDAO = new Venda_DAO();
-if($objVendaDAO->inserirVendaComItens($objVenda,$objVendProd))
+    $retorno = $objVendaDAO->inserirVendaComItens($objVenda,$objVendProd);
+if($retorno)
     header("Location:../venda/compra.php?id=$retorno");
 else
     header("Location:index.php?C_error");
