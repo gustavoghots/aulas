@@ -24,6 +24,10 @@ main {
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
 }
 
+.modal-backdrop {
+  z-index: -2;
+}
+
 #stars {
   width: 1px;
   height: 1px;

@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="sass/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="script.js"></script>
     <title>Portfolio</title>
 </head>
 
@@ -27,9 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mim">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#Projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#exemplo">Exemplo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -49,17 +51,47 @@
                             alt="Foto Perfil">
                     </div>
                     <div class="col">
-                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.</span>
+                        <span id="introducao"></span>
                     </div>
                 </div>
             </div>
         </section>
+        <section id="sobre-mim" class="d-flex flex-column align-items-center justify-content-center w-100 vh-100 text-light p-4">
+            <!-- Apresentação Profissional -->
+            <div class="text-center">
+                <h2 class="mb-4">Sobre Mim</h2>
+                <p id="introducao">
+                    Olá, sou Gustavo Fiss, estagiário de desenvolvimento de sistemas na Perceptiva, Uruguai. Atualmente, estou concluindo o ensino médio em Informática para a Internet no Instituto Federal Sul-rio-grandense. Tenho experiência em infraestrutura de sistemas e suporte técnico, além de uma certificação Cambridge em inglês B2. Minha paixão é programação e desenvolvimento web, e busco constantemente desafios que me permitam crescer e inovar. Valorizo a integridade, o comprometimento e a busca pela excelência em todos os projetos que participo.
+                </p>
+            </div>
+        
+            <!-- Habilidades -->
+            <div class="text-center mt-5">
+                <h3 class="mb-3">Minhas Habilidades</h3>
+                <ul class="list-unstyled">
+                    <li>Programação (Computação)</li>
+                    <li>Desenvolvimento Web</li>
+                    <li>Programação Lógica</li>
+                </ul>
+            </div>
+        
+            <!-- Objetivos -->
+            <div class="text-center mt-5">
+                <h3 class="mb-3">Objetivos</h3>
+                <p>
+                    Meu principal objetivo é continuar me aprimorando no desenvolvimento de sistemas e aplicações web, buscando sempre desafios que me permitam crescer profissionalmente. Estou empenhado em contribuir para projetos que tenham um impacto positivo e que possibilitem o desenvolvimento de soluções tecnológicas inovadoras.
+                </p>
+            </div>
+        
+            <!-- Valores e Princípios -->
+            <div class="text-center mt-5">
+                <h3 class="mb-3">Valores e Princípios</h3>
+                <p>
+                    Valorizo a honestidade, o comprometimento e a busca pela excelência em tudo que faço. Acredito em trabalhar com integridade e transparência, sempre focando na entrega de resultados de alta qualidade e no cumprimento dos prazos estabelecidos. Meu compromisso é com a inovação e a melhoria contínua.
+                </p>
+            </div>
+        </section>
+        
         <section id="Projetos" class="d-flex w-100 vh-100">
             <div class="d-flex align-items-center justify-content-center container-fluid">
                 <div class="row w-75 h-75">
@@ -153,6 +185,68 @@
                     </div>
                 </div>
         </section>
+        <section id="exemplo" class="d-flex w-100 vh-100">
+            <div class="d-flex z-0 align-items-center justify-content-center w-100">
+                <div class="position-relative w-75 h-75" id="CanvaWarp">
+                    <!-- Ícone de informações -->
+                    <button type="button" class="btn btn-info position-absolute top-0 end-0 m-2" data-bs-toggle="modal"
+                        data-bs-target="#infoModal">
+                        <i class="bi bi-info-circle-fill"></i>
+                    </button>
+
+                    <!-- Canvas -->
+                    <canvas id="exemploCanva" class="bg-body-tertiary rounded w-100 h-100"></canvas>
+                </div>
+            </div>
+        </section>
+        <section id="contato" class="d-flex w-100 vh-100 align-items-center justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-6 mx-auto">
+                        <h2 class="text-center mb-4">Contato</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Seu email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="4" placeholder="Sua mensagem"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal de informações -->
+        <div class="modal fade z-3" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoModalLabel">Informações sobre o exemplo de Canvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Este exemplo de canvas mostra a animação de partículas com colisões entre elas e com as
+                            paredes do canvas.
+                            Cada partícula tem uma massa proporcional ao seu tamanho e colide com base na conservação do
+                            momento.
+                            Ao clicar em uma partícula, ela é removida e substituída por uma nova.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
