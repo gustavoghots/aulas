@@ -5,7 +5,7 @@ include_once "../class/produto.class.php";
 include_once "../class/DAO/produtoDAO.class.php";
 
 if(!isset($_SESSION['logadoAdm'])){
-    header("location=../login.php");
+    header("Location: ../login.php");
 }
 
 $id = $_GET['id'];

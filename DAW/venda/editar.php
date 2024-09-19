@@ -5,7 +5,7 @@ include_once "../class/venda.class.php";
 include_once "../class/DAO/vendasDAO.class.php";
 
 if (!isset($_SESSION['logadoAdm'])) {
-    header("location=../login.php");
+    header("Location: ../login.php");
 }
 
 $objVendaDAO = new Venda_DAO();

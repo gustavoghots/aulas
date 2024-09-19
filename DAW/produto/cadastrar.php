@@ -9,7 +9,7 @@
     <?php
     session_start();
         if(!isset($_SESSION['logadoADM'])){
-            header("Location=../login.php");
+            header("Location: ../login.php");
         }
         include_once '../class/categoria.class.php';
         include_once '../class/DAO/CategoriaDAO.class.php';

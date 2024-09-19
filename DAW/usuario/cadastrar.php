@@ -9,7 +9,7 @@
     <?php
     session_start();
         if(!isset($_SESSION['logadoADM'])){
-            header("Location=../login.php");
+            header("Location: ../login.php");
         }
     ?>
 </head>

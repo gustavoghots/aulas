@@ -5,7 +5,7 @@
 	include_once "../class/DAO/produtoDAO.class.php";
 	
 	if(!isset($_SESSION['logadoAdm'])){
-		header("location=../login.php");
+		header("Location: ../login.php");
 	}
     $oferta = $_POST['oferta'];
     $idProduto = $_POST['idProduto'];
