@@ -12,6 +12,7 @@
     <?php
     include 'header.html';
     ?>
+    </main>
 </body>
 
 </html>
