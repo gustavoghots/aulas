@@ -1,5 +1,5 @@
 <?php
-    @include_once'../categoria.class.php';
+    @include_once '../categoria.class.php';
     class Categoria_DAO{
         private $conexao;
         public function __construct(){

@@ -1,5 +1,5 @@
 <?php
-    @include_once'../produto.class.php';
+    @include_once '../produto.class.php';
     class Produto_DAO{
         private $conexao;
         public function __construct(){

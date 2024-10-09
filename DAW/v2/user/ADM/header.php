@@ -17,7 +17,7 @@
       <a href="#" class="nav-link link-body-emphasis">Produto</a>
     </li>
     <li></li>
-      <a href="#" class="nav-link link-body-emphasis">venda</a>
+    <a href="#" class="nav-link link-body-emphasis">venda</a>
     </li>
   </ul>
 
@@ -35,7 +35,7 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><a class="dropdown-item text-danger" href="../logOut.php">Sair</a></li>
     </ul>
   </div>
 </header>

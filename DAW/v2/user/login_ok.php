@@ -24,6 +24,7 @@
             $_SESSION['adm']=true;
             header("Location:adm/index.php");
         }else{
+            unset($_SESSION['adm']);
             header("Location:../site/index.php");
         }
     }

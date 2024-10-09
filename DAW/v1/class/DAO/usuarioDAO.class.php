@@ -105,7 +105,47 @@
             // Executa a query
             return $sql->execute();
         }
-        
+
+        public function trocarSenha($usuarioObj) {
+            // Obter valores do objeto usuário
+            $idUsuario = $usuarioObj->getIdUsuario();
+            $senhaAntiga = explode(" ", $usuarioObj->getSenha())[0];
+            $senhaNova = explode(" ", $usuarioObj->getSenha())[1];
+    
+            try {
+                // Verificar se o usuário existe e a senha antiga está correta
+                $query = "SELECT senha FROM usuarios WHERE idUsuario = :idUsuario";
+                $stmt = $this->conexao->prepare($query);
+                $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+                $stmt->execute();
+    
+                if ($stmt->rowCount() == 1) {
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $senhaHash = $result['senha'];
+    
+                    // Validar se a senha antiga está correta
+                    if (password_verify($senhaAntiga, $senhaHash)) {
+                        // Gerar hash da nova senha
+                        $senhaNovaHash = password_hash($senhaNova, PASSWORD_BCRYPT);
+    
+                        // Atualizar a senha do usuário no banco de dados
+                        $updateQuery = "UPDATE usuarios SET senha = :senhaNova WHERE idUsuario = :idUsuario";
+                        $updateStmt = $this->conexao->prepare($updateQuery);
+                        $updateStmt->bindParam(':senhaNova', $senhaNovaHash, PDO::PARAM_STR);
+                        $updateStmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+                        $updateStmt->execute();
+    
+                        return "Senha alterada com sucesso!";
+                    } else {
+                        return "Senha antiga incorreta.";
+                    }
+                } else {
+                    return "Usuário não encontrado.";
+                }
+            } catch (PDOException $e) {
+                return "Erro: " . $e->getMessage();
+            }
+        }
     }
 
 ?>

@@ -32,6 +32,7 @@ if ($termoPesquisa) {
 $retorno = $objProdutoDAO->listar($complemento);
 $categorias = $objCategoriaDAO->listar(); // Supondo que haja um método listar() para categorias
 ?>
+<p><a href="../usuario/atualizar.php">Trocar Senha</a></p>
 <p><a href="carrinho.php">Carrinho</a></p>
 <p><a href="../venda/listar.php">Minhas compras</a></p>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Padel</title>
-    <?php include '../bin/imports.html';?>
+    <?php include '../bin/imports.php';?>
 </head>
 
 <body>
