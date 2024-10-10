@@ -29,12 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Cria um objeto usuario e define os valores necessários
     $usuario = new usuario();
     $usuario->setIdUsuario($_SESSION['idUsuario']);
+    $usuario->setSenha($senhaNova);
+    if(!$usuario->SenhaNosParametros()){
+        echo "senha fora dos parametros";
+        exit();
+    }
+    
     $usuario->setSenha("$senhaAntiga $senhaNova"); // Concatenando para passar para a função
 
     // Chama a função para trocar a senha
     $resultado = $usuarioDAO->trocarSenha($usuario);
 
     // Exibe o resultado
+    if($retorno == true){
+        header('Location: login.php');
+        exit();
+    }
     echo $resultado;
 }
 ?>

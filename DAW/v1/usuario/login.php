@@ -29,7 +29,8 @@
                     <input type="password" id="password" name="password" required class="form-control"><br>
                     <?php
                     if (isset($_GET['senha'])) {
-                        echo "<p id='log_erro'>Senha Incorreta</p>";
+                        echo "<p id='log_erro'>Senha Incorreta <br>
+                        <a href='recuperacao.php'>esqueci minha senha</a></p>";
                     } else {
                         echo "<br>";
                     }
