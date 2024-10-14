@@ -5,13 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <?php
-        session_start();
-        include_once '../../bin/imports.php';
-        if (!$_SESSION['adm']) {
-        header("Location: ../login.php");
-        }
-    ?>
 </head>
 <body class="overflow-hidden">
     <?php
@@ -47,8 +40,8 @@
                     <th scope="row">3</th>
                     <td>Categoria</td>
                     <td colspan="2" class="text-center">
-                        <a href=""><button class="btn btn-success me-1">Cadastrar</button></a>
-                        <a href="../../categoria/listar.php"><button class="btn btn-primary ms-1">Listar/Editar</button></a>
+                        <a href="../../categoria/adicionar.php"><button class="btn btn-success me-1">Cadastrar</button></a>
+                        <a href="../../categoria/index.php"><button class="btn btn-primary ms-1">Listar/Editar</button></a>
                     </td>
                 </tr>
                 <tr>

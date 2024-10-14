@@ -5,11 +5,16 @@
         public function __construct(){
             $this->conexao = new PDO("mysql:host=localhost;dbname=padel","root","");
         }
-        public function inserir(Categoria $categoria){
-            $sql= $this->conexao->prepare("insert into categoria(descricao) value(:descricao)");
-            $sql->bindValue(":descricao",$categoria->getDescricao());
-            return $sql->execute();
+        public function inserir(Categoria $categoria) {
+            try {
+                $sql = $this->conexao->prepare("INSERT INTO categoria (descricao) VALUES (:descricao)");
+                $sql->bindValue(":descricao", $categoria->getDescricao());
+                return $sql->execute();
+            } catch (PDOException $e) {
+                return false; // Retorna false em caso de erro
+            }
         }
+        
         public function listar(){
             $sql= $this->conexao->prepare("select * from categoria");
             $sql->execute();

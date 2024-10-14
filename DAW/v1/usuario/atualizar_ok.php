@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $resultado = $usuarioDAO->trocarSenha($usuario);
 
     // Exibe o resultado
-    if($retorno == true){
+    if($resultado == true){
         header('Location: login.php');
         exit();
     }
