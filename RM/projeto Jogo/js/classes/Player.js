@@ -123,9 +123,8 @@ class Player extends Sprite {
   }
 
   update() {
-    this.updateFrames()
     this.updateHitbox()
-
+    this.draw()
     this.updateCamerabox()
     // c.fillStyle = 'rgba(0, 0, 255, 0.2)'
     // c.fillRect(
@@ -146,8 +145,6 @@ class Player extends Sprite {
     //   this.hitbox.width,
     //   this.hitbox.height
     // )
-
-    this.draw()
 
     this.position.x += this.velocity.x
     this.updateHitbox()

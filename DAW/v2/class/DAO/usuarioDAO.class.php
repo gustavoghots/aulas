@@ -59,8 +59,8 @@
         
         
 
-        public function listar(){
-            $sql= $this->conexao->prepare("select * from usuario where adm=true");
+        public function listar($complemento = '1=1'){
+            $sql= $this->conexao->prepare("select * from usuario where $complemento");
             $sql->execute();
             return $sql->fetchAll();
         }

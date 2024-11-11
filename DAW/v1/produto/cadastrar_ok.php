@@ -27,10 +27,9 @@
     $objProduto->setImagem($nomeImagem);
     $objProduto->setQtdEstoque($qtd_estoque);
     $objProduto->setCategoriaIdCategoria($Categoria_idCategoria);
-    $objProduto->setImagem($nomeImagem);
 
-    $objCategoriaDAO = new Produto_DAO();
-    $retorno = $objCategoriaDAO->inserir($objProduto);
-    $oferta = $objCategoriaDAO->ofertar($objProduto);
+    $objProdutoDAO = new Produto_DAO();
+    $retorno = $objProdutoDAO->inserir($objProduto);
+    $oferta = $objProdutoDAO->ofertar($objProduto);
     if($retorno && $oferta) header("Location:../usuario/adm/index.php?prodOk");
 ?>

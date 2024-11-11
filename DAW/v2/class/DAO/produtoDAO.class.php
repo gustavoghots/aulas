@@ -16,16 +16,25 @@
             $sql->bindValue(":oferta",$produto->getOferta());
             $sql->bindValue(":qtd_estoque",$produto->getQtdEstoque());
             $sql->bindValue(":Categoria_idCategoria",$produto->getCategoriaIdCategoria());
-            return $sql->execute();
+            $sql->execute();
+            return $this->conexao->lastInsertId();
         }
         public function listar($complemento = '1=1') {
-            $sql = $this->conexao->prepare("SELECT p.*, c.descricao AS categoria
+            $sql = $this->conexao->prepare("SELECT 
+                                                p.idProduto,
+                                                p.nome,
+                                                p.preco,
+                                                CONCAT(p.oferta, '%') AS oferta,
+                                                p.descricao,
+                                                p.qtd_estoque AS estoque,
+                                                c.descricao AS categoria
                                             FROM Produto p
                                             INNER JOIN categoria c ON p.Categoria_idCategoria = c.idCategoria
                                             WHERE $complemento");
             $sql->execute();
             return $sql->fetchAll();
         }
+        
         
         public function excluir($id){
             $sql= $this->conexao->prepare("delete from produto where idProduto=:id");

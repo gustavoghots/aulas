@@ -33,7 +33,7 @@
                     <td>Produto</td>
                     <td colspan="2" class="text-center">
                         <a href=""><button class="btn btn-success me-1">Cadastrar</button></a>
-                        <a href=""><button class="btn btn-primary ms-1">Listar/Editar</button></a>
+                        <a href="../../produto/index.php"><button class="btn btn-primary ms-1">Listar/Editar</button></a>
                     </td>
                 </tr>
                 <tr>

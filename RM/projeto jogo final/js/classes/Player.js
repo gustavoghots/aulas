@@ -5,7 +5,7 @@ class Player extends Sprite {
     platformCollisionBlocks,
     imageSrc,
     frameRate,
-    scale = 0.5,
+    scale = 0.7,
     animations,
   }) {
     super({ imageSrc, frameRate, scale })
@@ -68,7 +68,7 @@ class Player extends Sprite {
 
   checkForHorizontalCanvasCollision() {
     if (
-      this.hitbox.position.x + this.hitbox.width + this.velocity.x >= 576 ||
+      this.hitbox.position.x + this.hitbox.width + this.velocity.x >= 480 ||
       this.hitbox.position.x + this.velocity.x <= 0
     ) {
       this.velocity.x = 0
@@ -79,7 +79,7 @@ class Player extends Sprite {
     const cameraboxRightSide = this.camerabox.position.x + this.camerabox.width
     const scaledDownCanvasWidth = canvas.width / 4
 
-    if (cameraboxRightSide >= 576) return
+    if (cameraboxRightSide >= 480) return
 
     if (
       cameraboxRightSide >=
@@ -122,18 +122,18 @@ class Player extends Sprite {
     }
   }
 
-  update() {
+  update() { 
     this.updateFrames()
     this.updateHitbox()
 
     this.updateCamerabox()
-    // c.fillStyle = 'rgba(0, 0, 255, 0.2)'
-    // c.fillRect(
-    //   this.camerabox.position.x,
-    //   this.camerabox.position.y,
-    //   this.camerabox.width,
-    //   this.camerabox.height
-    // )
+    //c.fillStyle = 'rgba(0, 0, 255, 0.2)'
+    //c.fillRect(
+       //this.camerabox.position.x,
+       //this.camerabox.position.y,
+       //this.camerabox.width,
+       //this.camerabox.height
+     //)
 
     // draws out the image
     // c.fillStyle = 'rgba(0, 255, 0, 0.2)'
@@ -160,11 +160,11 @@ class Player extends Sprite {
   updateHitbox() {
     this.hitbox = {
       position: {
-        x: this.position.x + 35,
-        y: this.position.y + 26,
+        x: this.position.x+6.5,
+        y: this.position.y+6.5,
       },
-      width: 14,
-      height: 27,
+      width: 16,
+      height: 16,
     }
   }
 

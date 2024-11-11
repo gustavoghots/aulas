@@ -5,8 +5,8 @@ canvas.width = 1024
 canvas.height = 576
 
 const scaledCanvas = {
-  width: canvas.width / 4,
-  height: canvas.height / 4,
+  width: canvas.width / 3,
+  height: canvas.height / 3,
 }
 
 const floorCollisions2D = []
@@ -61,48 +61,48 @@ const player = new Player({
   },
   collisionBlocks,
   platformCollisionBlocks,
-  imageSrc: './img/warrior/Idle.png',
-  frameRate: 8,
+  imageSrc: './img/knight/idle.png',
+  frameRate: 7,
   animations: {
     Idle: {
-      imageSrc: './img/warrior/Idle.png',
-      frameRate: 8,
-      frameBuffer: 3,
+      imageSrc: './img/knight/idle.png',
+      frameRate: 7,
+      frameBuffer: 6,
     },
     Run: {
-      imageSrc: './img/warrior/Run.png',
-      frameRate: 8,
-      frameBuffer: 5,
+      imageSrc: './img/knight/move.png',
+      frameRate: 7,
+      frameBuffer: 6,
     },
     Jump: {
-      imageSrc: './img/warrior/Jump.png',
-      frameRate: 2,
-      frameBuffer: 3,
+      imageSrc: './img/knight/jump.png',
+      frameRate: 1,
+      frameBuffer: 1,
     },
     Fall: {
-      imageSrc: './img/warrior/Fall.png',
-      frameRate: 2,
-      frameBuffer: 3,
+      imageSrc: './img/knight/fall.png',
+      frameRate: 1,
+      frameBuffer: 1,
     },
     FallLeft: {
-      imageSrc: './img/warrior/FallLeft.png',
-      frameRate: 2,
-      frameBuffer: 3,
+      imageSrc: './img/knight/fall_left.png',
+      frameRate: 1,
+      frameBuffer: 1,
     },
     RunLeft: {
-      imageSrc: './img/warrior/RunLeft.png',
-      frameRate: 8,
-      frameBuffer: 5,
+      imageSrc: './img/knight/move_left.png',
+      frameRate: 7,
+      frameBuffer: 6,
     },
     IdleLeft: {
-      imageSrc: './img/warrior/IdleLeft.png',
-      frameRate: 8,
-      frameBuffer: 3,
+      imageSrc: './img/knight/idle_left.png',
+      frameRate: 7,
+      frameBuffer: 6,
     },
     JumpLeft: {
-      imageSrc: './img/warrior/JumpLeft.png',
-      frameRate: 2,
-      frameBuffer: 3,
+      imageSrc: './img/knight/jump_left.png',
+      frameRate: 1,
+      frameBuffer: 1,
     },
   },
 })
@@ -139,7 +139,7 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height)
 
   c.save()
-  c.scale(4, 4)
+  c.scale(3, 3)
   c.translate(camera.position.x, camera.position.y)
   background.update()
   // collisionBlocks.forEach((collisionBlock) => {

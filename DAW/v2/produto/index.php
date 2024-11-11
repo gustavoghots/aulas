@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Categorias</title>
+    <title>Lista Produtos</title>
 </head>
 
 <body class="overflow-hidden">
@@ -12,16 +12,14 @@
     include_once '../user/ADM/header.php';
     ?>
     <div class="container pe-5">
-        <h2>Categorias</h2>
+        <h2>Produtos</h2>
         <?php
         if (isset($_GET['delete_NOK'])) {
-            echo "<p class='text-danger'>Não foi possível excluir a Categoria</p>";
-        }
-        elseif (isset($_GET['delete_OK'])) {
-            echo "<p class='text-success'>Categoria excluída com sucesso</p>";
-        }
-        elseif(isset($_GET['edit_OK'])){
-            echo "<p class='text-success'>Categoria atualizada com sucesso</p>";
+            echo "<p class='text-danger'>Não foi possível excluir o Produto</p>";
+        } elseif (isset($_GET['delete_OK'])) {
+            echo "<p class='text-success'>Produto excluído com sucesso</p>";
+        } elseif (isset($_GET['edit_OK']) || isset($_GET['ofer_OK'])) {
+            echo "<p class='text-success'>Produto atualizado com sucesso</p>";
         }
         ?>
 
@@ -35,37 +33,44 @@
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Oferta</th>
+                    <th>Descrição</th>
+                    <th>Estoque</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                include_once '../class/DAO/CategoriaDAO.class.php';
-                $objCategoriaDAO = new Categoria_DAO();
-                $retorno = $objCategoriaDAO->listar();
+                include_once '../class/DAO/produtoDAO.class.php';
+                $objProdutoDAO = new Produto_DAO();
+                $retorno = $objProdutoDAO->listar();
 
                 if (count($retorno) > 0) {
                     foreach ($retorno as $row): ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['idCategoria']); ?></td>
+                            <td><?= htmlspecialchars($row['idProduto']); ?></td>
+                            <td><?= htmlspecialchars($row['nome']); ?></td>
+                            <td><?= htmlspecialchars($row['preco']); ?></td>
+                            <td><?= htmlspecialchars($row['oferta']); ?></td>
                             <td><?= htmlspecialchars($row['descricao']); ?></td>
+                            <td><?= htmlspecialchars($row['estoque']); ?></td>
                             <td class="text-center">
-                                <a href="editar.php?id=<?= $row['idCategoria']; ?>" class="btn btn-warning me-2">Editar</a>
-                                <a href="excluir.php?id=<?= $row['idCategoria']; ?>" class="btn btn-danger" 
-                                   onclick="return confirm('Tem certeza que deseja excluir este item?');">Excluir</a>
+                                <a href="ofertar.php?id=<?= $row['idProduto']; ?>" class="btn btn-primary me-2">Ofertar</a>
+                                <a href="editar.php?id=<?= $row['idProduto']; ?>" class="btn btn-warning me-2">Ver/Editar</a>
+                                <a href="excluir.php?id=<?= $row['idProduto']; ?>" class="btn btn-danger"
+                                    onclick="return confirm('Tem certeza que deseja excluir este item?');">Excluir</a>
                             </td>
                         </tr>
                 <?php endforeach;
                 } else {
-                    echo "<tr><td colspan='3'>Nenhum dado encontrado</td></tr>";
+                    echo "<tr><td colspan='7'>Nenhum dado encontrado</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
+
     </div>
-
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-
     <script>
         $(document).ready(function() {
             $('#example').DataTable({

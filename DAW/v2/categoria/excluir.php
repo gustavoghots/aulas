@@ -5,8 +5,8 @@
     $retorno = $objCategoriaDAO->excluir($_GET['id']);
 
     if($retorno){
-        header('Location: index.php?OK');
+        header('Location: index.php?delete_OK');
     }else{
-        header('Location: index.php?NOK');
+        header('Location: index.php?delete_NOK');
     }
 ?>

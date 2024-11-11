@@ -4,9 +4,9 @@ session_start();
 include_once "../class/produto.class.php";
 include_once "../class/DAO/produtoDAO.class.php";
 
-if (!isset($_SESSION['logadoAdm'])) {
+/*if (!isset($_SESSION['logadoAdm'])) {
 	header("Location: ../login.php");
-}
+}*/
 $objProdutoDAO = new Produto_DAO();
 $retorno = $objProdutoDAO->listar();
 ?>
