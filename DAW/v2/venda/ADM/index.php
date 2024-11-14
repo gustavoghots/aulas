@@ -4,67 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Categorias</title>
+    <title>Lista de Vendas</title>
 </head>
 
 <body>
     <?php
-    include_once '../user/ADM/header.php';
+    include_once '../../user/ADM/header.php';
     ?>
     <div class="container pe-5">
-        <h2>Categorias</h2>
+        <h2>Vendas</h2>
         <?php
         if (isset($_GET['delete_NOK'])) {
-            echo "<p class='text-danger'>Não foi possível excluir a Categoria</p>";
-        }
-        elseif (isset($_GET['delete_OK'])) {
-            echo "<p class='text-success'>Categoria excluída com sucesso</p>";
-        }
-        elseif(isset($_GET['edit_OK'])){
-            echo "<p class='text-success'>Categoria atualizada com sucesso</p>";
+            echo "<p class='text-danger'>Não foi possível excluir a venda</p>";
+        } elseif (isset($_GET['delete_OK'])) {
+            echo "<p class='text-success'>Venda excluída com sucesso</p>";
+        } elseif (isset($_GET['edit_OK'])) {
+            echo "<p class='text-success'>Venda atualizada com sucesso</p>";
         }
         ?>
-
-        <!-- Botão Adicionar -->
-        <div class="d-flex justify-content-between mb-2">
-            <a href="adicionar.php" class="btn btn-success">Adicionar</a>
-        </div>
 
         <table id="example" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Pagamento</th>
+                    <th>Valor Total</th>
+                    <th>Status</th>
+                    <th>Usuário</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                include_once '../class/DAO/CategoriaDAO.class.php';
-                $objCategoriaDAO = new Categoria_DAO();
-                $retorno = $objCategoriaDAO->listar();
+                // Incluir a classe e listar as vendas
+                include_once '../../class/DAO/vendasDAO.class.php';
+                $objVendaDAO = new Venda_DAO();
+                $vendas = $objVendaDAO->listar();
 
-                if (count($retorno) > 0) {
-                    foreach ($retorno as $row): ?>
+                // Verifica se há vendas para exibir
+                if (count($vendas) > 0) {
+                    foreach ($vendas as $venda): ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['idCategoria']); ?></td>
-                            <td><?= htmlspecialchars($row['descricao']); ?></td>
+                            <td><?= htmlspecialchars($venda['idVenda']); ?></td>
+                            <td><?= date('d/m/Y', strtotime($venda['data'])); ?></td>
+                            <td><?= htmlspecialchars($venda['pagamento']); ?></td>
+                            <td><?= htmlspecialchars($venda['valor_Total']); ?></td>
+                            <td><?= htmlspecialchars($venda['status']); ?></td>
+                            <td><?= htmlspecialchars($venda['usuario']); ?></td>
                             <td class="text-center">
-                                <a href="editar.php?id=<?= $row['idCategoria']; ?>" class="btn btn-warning me-2">Editar</a>
-                                <a href="excluir.php?id=<?= $row['idCategoria']; ?>" class="btn btn-danger" 
-                                   onclick="return confirm('Tem certeza que deseja excluir este item?');">Excluir</a>
+                                <a href="notaFiscal.php?id=<?= $venda['idVenda']; ?>" class="btn btn-warning me-2">Nota Fiscal</a>
                             </td>
                         </tr>
                 <?php endforeach;
                 } else {
-                    echo "<tr><td colspan='3'>Nenhum dado encontrado</td></tr>";
+                    echo "<tr><td colspan='7'>Nenhuma venda encontrada</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
-
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
         $(document).ready(function() {

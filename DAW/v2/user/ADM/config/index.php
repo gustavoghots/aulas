@@ -4,24 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Categorias</title>
+    <title>Lista de Administradores</title>
 </head>
 
 <body>
     <?php
-    include_once '../user/ADM/header.php';
+    include_once '../header.php';
     ?>
     <div class="container pe-5">
-        <h2>Categorias</h2>
+        <h2>Administradores</h2>
         <?php
         if (isset($_GET['delete_NOK'])) {
-            echo "<p class='text-danger'>Não foi possível excluir a Categoria</p>";
-        }
-        elseif (isset($_GET['delete_OK'])) {
-            echo "<p class='text-success'>Categoria excluída com sucesso</p>";
-        }
-        elseif(isset($_GET['edit_OK'])){
-            echo "<p class='text-success'>Categoria atualizada com sucesso</p>";
+            echo "<p class='text-danger'>Não foi possível excluir o administrador</p>";
+        } elseif (isset($_GET['delete_OK'])) {
+            echo "<p class='text-success'>Administrador excluído com sucesso</p>";
+        } elseif (isset($_GET['add_OK'])) {
+            echo "<p class='text-success'>Administrador Adicionado com sucesso</p>";
         }
         ?>
 
@@ -34,37 +32,40 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nome</th>
+                    <th>Usuário</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Número</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                include_once '../class/DAO/CategoriaDAO.class.php';
-                $objCategoriaDAO = new Categoria_DAO();
-                $retorno = $objCategoriaDAO->listar();
+                include_once '../../../class/DAO/usuarioDAO.class.php';
+                $objUsuarioDAO = new Usuario_DAO();
+                $retorno = $objUsuarioDAO->listar('adm = 1');
 
                 if (count($retorno) > 0) {
                     foreach ($retorno as $row): ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['idCategoria']); ?></td>
-                            <td><?= htmlspecialchars($row['descricao']); ?></td>
+                            <td><?= htmlspecialchars($row['idUsuario']); ?></td>
+                            <td><?= htmlspecialchars($row['usuario']); ?></td>
+                            <td><?= htmlspecialchars($row['email']); ?></td>
+                            <td><?= htmlspecialchars($row['CPF']); ?></td>
+                            <td><?= htmlspecialchars($row['numero']); ?></td>
                             <td class="text-center">
-                                <a href="editar.php?id=<?= $row['idCategoria']; ?>" class="btn btn-warning me-2">Editar</a>
-                                <a href="excluir.php?id=<?= $row['idCategoria']; ?>" class="btn btn-danger" 
-                                   onclick="return confirm('Tem certeza que deseja excluir este item?');">Excluir</a>
+                                <a href="excluir.php?id=<?= $row['idUsuario']; ?>" class="btn btn-danger"
+                                    onclick="return confirm('Tem certeza que deseja excluir este administrador?');">Excluir</a>
                             </td>
                         </tr>
                 <?php endforeach;
                 } else {
-                    echo "<tr><td colspan='3'>Nenhum dado encontrado</td></tr>";
+                    echo "<tr><td colspan='6'>Nenhum administrador encontrado</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
-
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
         $(document).ready(function() {

@@ -7,7 +7,7 @@
     <title>Lista Produtos</title>
 </head>
 
-<body class="overflow-hidden">
+<body>
     <?php
     include_once '../user/ADM/header.php';
     ?>

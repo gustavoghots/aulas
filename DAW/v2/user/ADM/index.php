@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
-<body class="overflow-hidden">
+<body>
     <?php
     include_once 'header.php';
     ?>
@@ -25,14 +25,14 @@
                     <th scope="row">1</th>
                     <td>Venda</td>
                     <td colspan="2" class="text-center">
-                        <a href=""><button class="btn btn-primary me-1">Listar</button></a>
+                        <a href="../../venda/ADM/index.php"><button class="btn btn-primary me-1">Listar</button></a>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Produto</td>
                     <td colspan="2" class="text-center">
-                        <a href=""><button class="btn btn-success me-1">Cadastrar</button></a>
+                        <a href="../../produto/adicionar.php"><button class="btn btn-success me-1">Cadastrar</button></a>
                         <a href="../../produto/index.php"><button class="btn btn-primary ms-1">Listar/Editar</button></a>
                     </td>
                 </tr>
@@ -49,7 +49,7 @@
                     <td>Administrador</td>
                     <td colspan="2" class="text-center">
                         <a href=""><button class="btn btn-success me-1">Cadastrar</button></a>
-                        <a href=""><button class="btn btn-primary ms-1">Listar/Editar</button></a>
+                        <a href="config/index.php"><button class="btn btn-primary ms-1">Listar/Editar</button></a>
                     </td>
                 </tr>
 

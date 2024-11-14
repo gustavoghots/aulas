@@ -76,7 +76,12 @@ class Venda_DAO
     }
     public function getDetalhes($idVenda){
         $sql = $this->conexao->prepare("
-        select v.data as data, u.usuario as usuario, v.status as status, p.imagem as imagem, p.nome as nome, vhp.Valor_Unit as valor, vhp.Quantidade as quantidade, v.valor_Total as valorTotal
+        select v.data as data, u.usuario as usuario, 
+        v.status as status, 
+        v.entrega as local,
+        p.imagem as imagem, p.nome as nome, 
+        vhp.Valor_Unit as valor, vhp.Quantidade as quantidade, 
+        v.valor_Total as valorTotal
         from usuario u inner join venda v
             on u.idUsuario = v.Usuario_idUsuario
             inner join venda_has_produto vhp
@@ -90,7 +95,8 @@ class Venda_DAO
     }
 
     public function listar($complemento = ""){
-        $sql = $this->conexao->prepare("SELECT * FROM venda ".$complemento);
+        $sql = $this->conexao->prepare("SELECT venda.*, usuario.usuario as usuario FROM venda INNER JOIN usuario
+            ON venda.Usuario_idUsuario = usuario.idUsuario ".$complemento);
         $sql->execute();
         return $sql->fetchAll();
     }

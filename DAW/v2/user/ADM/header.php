@@ -36,7 +36,7 @@ if (!isset($_SESSION['adm'])) {
       <a href="index.php" class="nav-link link-secondary">Inicio</a>
     </li>
     <li>
-      <a href="#" class="nav-link link-body-emphasis">Administrador</a>
+      <a href="<?= $relativePath ?>/user/ADM/config/index.php" class="nav-link link-body-emphasis">Administrador</a>
     </li>
     <li>
       <a href="<?= $relativePath ?>/categoria/index.php" class="nav-link link-body-emphasis">Categoria</a>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['adm'])) {
       <a href="<?= $relativePath ?>/produto/index.php" class="nav-link link-body-emphasis">Produto</a>
     </li>
     <li></li>
-    <a href="#" class="nav-link link-body-emphasis">venda</a>
+    <a href="<?= $relativePath ?>/venda/ADM/index.php" class="nav-link link-body-emphasis">venda</a>
     </li>
   </ul>
 
@@ -68,4 +68,5 @@ if (!isset($_SESSION['adm'])) {
   </div>
 </header>
 
-<main class="container d-flex align-items-center justify-content-center vh-100" style="margin-left: 200px;">
+<main class="container d-flex justify-content-center align-items-center" style="margin-left: 200px; min-height: 100vh;">
+<div class="content-wrapper w-100 justify-content-center d-flex">
