@@ -13,15 +13,10 @@ if (!isset($_SESSION['adm'])) {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <!-- JS do Bootstrap e DataTables -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 
 
 <header class="d-flex flex-column border-end p-3 vh-100 position-fixed" style="width: 200px;">
@@ -53,13 +48,12 @@ if (!isset($_SESSION['adm'])) {
 
   <div class="dropdown">
     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="<?= $relativePath; ?>/img/no profile.png" alt="mdo" width="32" height="32" class="rounded-circle me-2">
-      <strong>Profile</strong>
+      <img src="<?= $relativePath; ?>/img/no_profile.png" alt="mdo" width="32" height="32" class="rounded-circle me-2">
+      <strong>Conta</strong>
     </a>
     <ul class="dropdown-menu text-small">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="<?= $relativePath; ?>/user/consumer/index.php">Visão do Usuario</a></li>
+      <li><a class="dropdown-item" href="#">Configurações</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>

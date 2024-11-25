@@ -53,8 +53,8 @@
             $sql->bindValue(":email", $usuario->getEmail());
             $sql->bindValue(":numero", $usuario->getNumero());
             $sql->bindValue(":adm", $usuario->getAdm());
-        
-            return $sql->execute();
+            $sql->execute();
+            return $this->conexao->lastInsertId();
         }
         
         

@@ -25,7 +25,7 @@
             header("Location:adm/index.php");
         }else{
             unset($_SESSION['adm']);
-            header("Location:../site/index.php");
+            header("Location:consumer/index.php");
         }
     }
 ?>

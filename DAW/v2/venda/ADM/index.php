@@ -39,6 +39,7 @@
                 <?php
                 // Incluir a classe e listar as vendas
                 include_once '../../class/DAO/vendasDAO.class.php';
+                include_once '../../class/venda.class.php';
                 $objVendaDAO = new Venda_DAO();
                 $vendas = $objVendaDAO->listar();
 
@@ -50,7 +51,16 @@
                             <td><?= date('d/m/Y', strtotime($venda['data'])); ?></td>
                             <td><?= htmlspecialchars($venda['pagamento']); ?></td>
                             <td><?= htmlspecialchars($venda['valor_Total']); ?></td>
-                            <td><?= htmlspecialchars($venda['status']); ?></td>
+                            <td>
+                                <!-- Dropdown para alterar status -->
+                                <select class="form-select status-dropdown"
+                                    data-id="<?= htmlspecialchars($venda['idVenda']); ?>">
+                                    <option value="Pendente" <?= strcasecmp($venda['status'], 'Pendente') === 0 ? 'selected' : ''; ?>>Pendente</option>
+                                    <option value="Aprovado" <?= strcasecmp($venda['status'], 'Aprovado') === 0 ? 'selected' : ''; ?>>Aprovado</option>
+                                    <option value="Cancelado" <?= strcasecmp($venda['status'], 'Cancelado') === 0 ? 'selected' : ''; ?>>Cancelado</option>
+                                    <option value="Entregue" <?= strcasecmp($venda['status'], 'Entregue') === 0 ? 'selected' : ''; ?>>Entregue</option>
+                                </select>
+                            </td>
                             <td><?= htmlspecialchars($venda['usuario']); ?></td>
                             <td class="text-center">
                                 <a href="notaFiscal.php?id=<?= $venda['idVenda']; ?>" class="btn btn-warning me-2">Nota Fiscal</a>
@@ -70,6 +80,9 @@
             $('#example').DataTable({
                 pageLength: 25, // Limitar a 25 linhas por página
                 lengthMenu: [10, 25, 50, 100], // Opções de quantidade de registros por página
+                order: [
+                    [1, 'desc']
+                ], // Ordenar pela coluna de índice 1 (Data) em ordem decrescente
                 language: {
                     search: "Pesquisar:",
                     lengthMenu: "Mostrar _MENU_ registros por página",
@@ -83,6 +96,31 @@
                     }
                 },
                 ordering: true,
+            });
+        });
+
+        $(".status-dropdown").change(function() {
+            const idVenda = $(this).data("id");
+            const status = $(this).val();
+
+            $.ajax({
+                url: "atualizarStatus.php", // Altere o caminho, se necessário
+                type: "POST",
+                data: {
+                    idVenda,
+                    status
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data.success) {
+                        alert("Status atualizado com sucesso!");
+                    } else {
+                        alert("Erro ao atualizar o status: " + data.error);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Erro na requisição: " + error);
+                },
             });
         });
     </script>

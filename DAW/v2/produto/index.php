@@ -52,7 +52,7 @@
                             <td><?= htmlspecialchars($row['idProduto']); ?></td>
                             <td><?= htmlspecialchars($row['nome']); ?></td>
                             <td><?= htmlspecialchars($row['preco']); ?></td>
-                            <td><?= htmlspecialchars($row['oferta']); ?></td>
+                            <td><?= htmlspecialchars($row['oferta']); ?>%</td>
                             <td><?= htmlspecialchars($row['descricao']); ?></td>
                             <td><?= htmlspecialchars($row['estoque']); ?></td>
                             <td class="text-center">

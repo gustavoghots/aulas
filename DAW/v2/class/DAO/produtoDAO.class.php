@@ -24,8 +24,9 @@
                                                 p.idProduto,
                                                 p.nome,
                                                 p.preco,
-                                                CONCAT(p.oferta, '%') AS oferta,
+                                                p.oferta AS oferta,
                                                 p.descricao,
+                                                p.imagem as imagem,
                                                 p.qtd_estoque AS estoque,
                                                 c.descricao AS categoria
                                             FROM Produto p
